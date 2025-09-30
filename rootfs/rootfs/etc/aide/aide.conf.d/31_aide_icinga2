@@ -1,0 +1,29 @@
+@@define VCI var/cache/icinga2
+@@define VLII var/lib/icinga2
+@@define VLOI var/log/icinga2
+# redefine or insert your own system's uuid for a better rule
+@@if not defined ICINGA2_UUID
+@@define ICINGA2_UUID [[:xdigit:]]{8}-[[:xdigit:]]{4}-[[:xdigit:]]{4}-[[:xdigit:]]{4}-[[:xdigit:]]{12}
+@@endif
+@@if not defined ICINGA2_HOSTNAMERE
+@@define ICINGA_HOSTNAMERE ([[:alpha:]][-_\.[:alnum:]]*)
+@@endif
+
+/@@{VCI}$ d VarDir
+/@@{VCI}/(objects\\.cache|status\\.dat)$ f VarFile
+/@@{VLII}$ d VarDir
+/@@{VLII}/(icinga2\\.state|modified-attributes\\.conf)$ f VarFile
+/@@{VLII}/api/packages/_api/@@{ICINGA2_UUID}/conf\\.d/(comments|downtimes)$ d VarDir
+!/@@{VLII}/api/packages/_api/@@{ICINGA2_UUID}/conf\\.d/comments/@@{ICINGA2_HOSTNAMERE}![[:alnum:][:space:].]+![[:xdigit:]]{8}-[[:xdigit:]]{4}-[[:xdigit:]]{4}-[[:xdigit:]]{4}-[[:xdigit:]]{12}\\.conf$ f
+/@@{VLOI}/compat(/archives)?$ d VarDir
+/@@{VLOI}/compat/icinga\\.log$ Log
+!/@@{VLOI}/compat/archives/icinga-[[:digit:]]{2}-[[:digit:]]{2}-[[:digit:]]{4}-[[:digit:]]{2}\\.log$ f
+/@@{VLOI}/default/access\\.log$ Log
+/@@{VLOI}$ d VarDir
+/@@{VLOI}/icinga2\\.log$ Log
+/@@{VLOI}/icinga2\\.log\\.1$ f LowLog
+/@@{VLOI}/icinga2\\.log\\.2\\.@@{LOGEXT}$ f LoSerMemberLog
+/@@{VLOI}/icinga2\\.log\\.[3456]\\.@@{LOGEXT}$ f SerMemberLog
+/@@{VLOI}/icinga2\\.log\\.7\\.@@{LOGEXT}$ f HiSerMemberLog
+!/tmp/FileCache_icingaweb$ d
+!/tmp/FileCache_icingaweb/icinga-[0-9a-f]{8}-[0-9a-f]{8}-[0-9a-f]{8}\\.min\\.(css|js)$ f

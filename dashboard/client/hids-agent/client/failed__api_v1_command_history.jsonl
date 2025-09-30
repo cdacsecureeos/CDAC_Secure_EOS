@@ -1,0 +1,21 @@
+{"username":"root","from_ip":"10.182.0.73","commands":"./start-agent.sh","session_id":"root-pts/0-10.182.0.73","timestamp":"2025-08-26 14:28:05"}
+{"username":"root","from_ip":"10.182.0.73","commands":"cd client/","session_id":"root-pts/0-10.182.0.73","timestamp":"2025-08-26 14:28:05"}
+{"username":"root","from_ip":"10.182.0.73","commands":"sudo rm /etc/hids-agent/agent.json","session_id":"root-pts/0-10.182.0.73","timestamp":"2025-08-26 14:28:05"}
+{"username":"root","from_ip":"10.182.0.73","commands":"cd ../","session_id":"root-pts/0-10.182.0.73","timestamp":"2025-08-26 14:28:05"}
+{"username":"root","from_ip":"10.182.0.73","commands":"ls","session_id":"root-pts/0-10.182.0.73","timestamp":"2025-08-26 14:28:06"}
+{"username":"root","from_ip":"10.182.0.73","commands":"cat .env","session_id":"root-pts/0-10.182.0.73","timestamp":"2025-08-26 14:28:06"}
+{"username":"root","from_ip":"10.182.0.73","commands":"cp .env cd ../root/","session_id":"root-pts/0-10.182.0.73","timestamp":"2025-08-26 14:28:06"}
+{"username":"root","from_ip":"10.182.0.73","commands":"cp .env ../root/","session_id":"root-pts/0-10.182.0.73","timestamp":"2025-08-26 14:28:06"}
+{"username":"root","from_ip":"10.182.0.73","commands":"cp .env ../root","session_id":"root-pts/0-10.182.0.73","timestamp":"2025-08-26 14:28:06"}
+{"username":"root","from_ip":"10.182.0.73","commands":"rm -rf .env","session_id":"root-pts/0-10.182.0.73","timestamp":"2025-08-26 14:28:06"}
+{"username":"root","from_ip":"10.182.0.73","commands":"cd client/","session_id":"root-pts/0-10.182.0.73","timestamp":"2025-08-26 14:28:06"}
+{"username":"root","from_ip":"10.182.0.73","commands":"python3 enroll_agent.py","session_id":"root-pts/0-10.182.0.73","timestamp":"2025-08-26 14:28:06"}
+{"username":"root","from_ip":"10.182.0.73","commands":"python3 enroll_agent.py","session_id":"root-pts/0-10.182.0.73","timestamp":"2025-08-26 14:28:06"}
+{"username":"root","from_ip":"10.182.0.73","commands":"cd ../","session_id":"root-pts/0-10.182.0.73","timestamp":"2025-08-26 14:28:06"}
+{"username":"root","from_ip":"10.182.0.73","commands":"./start-agent.sh","session_id":"root-pts/0-10.182.0.73","timestamp":"2025-08-26 14:28:06"}
+{"username":"root","from_ip":"10.182.0.73","commands":"cat start-agent.sh","session_id":"root-pts/0-10.182.0.73","timestamp":"2025-08-26 14:28:06"}
+{"username":"root","from_ip":"10.182.0.73","commands":"cd","session_id":"root-pts/0-10.182.0.73","timestamp":"2025-08-26 14:28:06"}
+{"username":"root","from_ip":"10.182.0.73","commands":"ls","session_id":"root-pts/0-10.182.0.73","timestamp":"2025-08-26 14:28:06"}
+{"username":"root","from_ip":"10.182.0.73","commands":"ls -la","session_id":"root-pts/0-10.182.0.73","timestamp":"2025-08-26 14:28:06"}
+{"username":"root","from_ip":"10.182.0.73","commands":"cd hids-agent/","session_id":"root-pts/0-10.182.0.73","timestamp":"2025-08-26 14:28:06"}
+{"username":"root","from_ip":"10.182.0.73","commands":"nano .env","session_id":"root-pts/0-10.182.0.73","timestamp":"2025-08-26 14:28:06"}

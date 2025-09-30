@@ -1,0 +1,6 @@
+[Match]
+Name=lo
+
+[Network]
+Loopback=yes
+

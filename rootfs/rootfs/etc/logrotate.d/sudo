@@ -1,0 +1,12 @@
+/var/log/sudo.log {
+    weekly                 
+    rotate 2                
+    compress                
+    compresscmd /bin/xz     
+    compressext .xz       
+    delaycompress           
+    missingok               
+    notifempty              
+    maxsize 100k            
+    create 0600 root root   
+}

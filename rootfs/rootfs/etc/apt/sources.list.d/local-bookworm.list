@@ -1,0 +1,5 @@
+deb [signed-by=/etc/apt/keyrings/debian-bookworm.gpg] https://10.182.0.73/iot bookworm main contrib non-free non-free-firmware
+deb [signed-by=/etc/apt/keyrings/debian-bookworm.gpg] https://10.182.0.73/iot bookworm-updates main contrib non-free non-free-firmware
+deb [signed-by=/etc/apt/keyrings/debian-bookworm.gpg] https://10.182.0.73/iot bookworm-backports main contrib non-free non-free-firmware
+deb [signed-by=/etc/apt/keyrings/debian-bookworm.gpg] https://10.182.0.73/iot-security bookworm-security main contrib non-free 
+deb [signed-by=/etc/apt/keyrings/debian-bookworm.gpg] https://10.182.0.73/iot  bookworm-proposed-updates  main contrib non-free non-free-firmware

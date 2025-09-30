@@ -1,0 +1,35 @@
+#include <tunables/global>
+/usr/sbin/nginx {
+  #include <abstractions/apache2-common>
+  #include <abstractions/base>
+  #include <abstractions/nis>
+  #include <abstractions/web-data>
+  capability dac_override,
+  capability dac_read_search,
+  capability net_bind_service,
+  capability setgid,
+  capability setuid,
+
+  deny /var/www/html/forbidden/* r,
+
+  /etc/group r,
+  /etc/nginx/conf.d/ r,
+  /etc/nginx/mime.types r,
+  /etc/nginx/nginx.conf r,
+  /etc/nsswitch.conf r,
+  /etc/passwd r,
+  /etc/ssl/openssl.cnf r,
+  /run/nginx.pid rw,
+  /usr/sbin/nginx mr,
+  /var/log/nginx/access.log w,
+  /var/log/nginx/error.log w,
+  owner /etc/nginx/modules-enabled/ r,
+  owner /etc/nginx/sites-available/default r,
+  owner /etc/nginx/sites-enabled/ r,
+  owner /usr/share/nginx/modules-available/mod-http-geoip.conf r,
+  owner /usr/share/nginx/modules-available/mod-http-image-filter.conf r,
+  owner /usr/share/nginx/modules-available/mod-http-xslt-filter.conf r,
+  owner /usr/share/nginx/modules-available/mod-mail.conf r,
+  owner /usr/share/nginx/modules-available/mod-stream-geoip.conf r,
+  owner /usr/share/nginx/modules-available/mod-stream.conf r,
+}

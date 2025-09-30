@@ -1,0 +1,2311 @@
+Security report based on general data
+
+If you specify a proper suite, this report will include information
+regarding available security updates and obsolete packages.  To set
+the correct suite, run "dpkg-reconfigure debsecan" as root.
+
+*** Vulnerabilities
+
+CVE-2013-0337 The default configuration of nginx, possibly 1.3.13...
+  <https://security-tracker.debian.org/tracker/CVE-2013-0337>
+  - nginx, nginx-common (low urgency)
+
+CVE-2013-7445 The Direct Rendering Manager (DRM) subsystem in the...
+  <https://security-tracker.debian.org/tracker/CVE-2013-7445>
+  - linux-libc-dev
+
+CVE-2016-2781 chroot in GNU coreutils, when used with --userspec,...
+  <https://security-tracker.debian.org/tracker/CVE-2016-2781>
+  - coreutils (low urgency)
+
+CVE-2018-12928 In the Linux kernel 4.15.0, a NULL pointer...
+  <https://security-tracker.debian.org/tracker/CVE-2018-12928>
+  - linux-libc-dev (low urgency)
+
+CVE-2019-19449 In the Linux kernel 5.0.21, mounting a crafted f2fs...
+  <https://security-tracker.debian.org/tracker/CVE-2019-19449>
+  - linux-libc-dev
+
+CVE-2019-19814 In the Linux kernel 5.0.21, mounting a crafted f2fs...
+  <https://security-tracker.debian.org/tracker/CVE-2019-19814>
+  - linux-libc-dev
+
+CVE-2019-20794 An issue was discovered in the Linux kernel 4.18...
+  <https://security-tracker.debian.org/tracker/CVE-2019-20794>
+  - linux-libc-dev
+
+CVE-2020-0347 In iptables, there is a possible out of bounds write...
+  <https://security-tracker.debian.org/tracker/CVE-2020-0347>
+  - linux-libc-dev
+
+CVE-2020-14304 A memory disclosure flaw was found in the Linux...
+  <https://security-tracker.debian.org/tracker/CVE-2020-14304>
+  - linux-libc-dev
+
+CVE-2020-36694 An issue was discovered in netfilter in the Linux...
+  <https://security-tracker.debian.org/tracker/CVE-2020-36694>
+  - linux-libc-dev
+
+CVE-2021-3847 An unauthorized access to the execution of the setuid...
+  <https://security-tracker.debian.org/tracker/CVE-2021-3847>
+  - linux-libc-dev
+
+CVE-2021-3864 A flaw was found in the way the dumpable flag setting...
+  <https://security-tracker.debian.org/tracker/CVE-2021-3864>
+  - linux-libc-dev
+
+CVE-2021-47658 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2021-47658>
+  - linux-libc-dev
+
+CVE-2022-39836 An issue was discovered in Connected Vehicle Systems...
+  <https://security-tracker.debian.org/tracker/CVE-2022-39836>
+  - libdlt2
+
+CVE-2022-39837 An issue was discovered in Connected Vehicle Systems...
+  <https://security-tracker.debian.org/tracker/CVE-2022-39837>
+  - libdlt2
+
+CVE-2023-0597 A flaw possibility of memory leak in the Linux kernel...
+  <https://security-tracker.debian.org/tracker/CVE-2023-0597>
+  - linux-libc-dev
+
+CVE-2023-26257 An issue was discovered in the Connected Vehicle...
+  <https://security-tracker.debian.org/tracker/CVE-2023-26257>
+  - libdlt2
+
+CVE-2023-26819 cJSON 1.7.15 might allow a denial of service via a...
+  <https://security-tracker.debian.org/tracker/CVE-2023-26819>
+  - libcjson1
+
+CVE-2023-28366 The broker in Eclipse Mosquitto 1.3.2 through 2.x...
+  <https://security-tracker.debian.org/tracker/CVE-2023-28366>
+  - libmosquitto-dev, libmosquitto1, mosquitto, mosquitto-clients,
+    mosquitto-dev
+
+CVE-2023-2953 A vulnerability was found in openldap. This security...
+  <https://security-tracker.debian.org/tracker/CVE-2023-2953>
+  - libldap-2.5-0, libldap-common
+
+CVE-2023-31082 An issue was discovered in drivers/tty/n_gsm.c in...
+  <https://security-tracker.debian.org/tracker/CVE-2023-31082>
+  - linux-libc-dev
+
+CVE-2023-31484 CPAN.pm before 2.35 does not verify TLS certificates...
+  <https://security-tracker.debian.org/tracker/CVE-2023-31484>
+  - libperl5.36, perl, perl-base, perl-modules-5.36
+
+CVE-2023-32570 VideoLAN dav1d before 1.2.0 has a thread_task.c race...
+  <https://security-tracker.debian.org/tracker/CVE-2023-32570>
+  - libdav1d6
+
+CVE-2023-32681 Requests is a HTTP library. Since Requests 2.3.0,...
+  <https://security-tracker.debian.org/tracker/CVE-2023-32681>
+  - python3-requests
+
+CVE-2023-3397 A race condition occurred between the functions...
+  <https://security-tracker.debian.org/tracker/CVE-2023-3397>
+  - linux-libc-dev
+
+CVE-2023-36054 lib/kadm5/kadm_rpc_xdr.c in MIT Kerberos 5 (aka...
+  <https://security-tracker.debian.org/tracker/CVE-2023-36054>
+  - libgssapi-krb5-2, libk5crypto3, libkrb5-3, libkrb5support0
+
+CVE-2023-36321 Connected Vehicle Systems Alliance (COVESA) up to...
+  <https://security-tracker.debian.org/tracker/CVE-2023-36321>
+  - libdlt2
+
+CVE-2023-37454 An issue was discovered in the Linux kernel through...
+  <https://security-tracker.debian.org/tracker/CVE-2023-37454>
+  - linux-libc-dev
+
+CVE-2023-4010 A flaw was found in the USB Host Controller Driver...
+  <https://security-tracker.debian.org/tracker/CVE-2023-4010>
+  - linux-libc-dev
+
+CVE-2023-4016 Under some circumstances, this weakness allows a user...
+  <https://security-tracker.debian.org/tracker/CVE-2023-4016>
+  - libproc2-0, procps
+
+CVE-2023-4133 A use-after-free vulnerability was found in the cxgb4...
+  <https://security-tracker.debian.org/tracker/CVE-2023-4133>
+  - linux-libc-dev
+
+CVE-2023-42465 Sudo before 1.9.15 might allow row hammer attacks...
+  <https://security-tracker.debian.org/tracker/CVE-2023-42465>
+  - sudo
+
+CVE-2023-45853 MiniZip in zlib through 1.3 has an integer overflow...
+  <https://security-tracker.debian.org/tracker/CVE-2023-45853>
+  - zlib1g
+
+CVE-2023-4806 A flaw was found in glibc. In an extremely rare...
+  <https://security-tracker.debian.org/tracker/CVE-2023-4806>
+  - libc-bin, libc-dev-bin, libc-devtools, libc-l10n, libc6, libc6-dbg,
+    libc6-dev, locales
+
+CVE-2023-50495 NCurse v6.4-20230418 was discovered to contain a...
+  <https://security-tracker.debian.org/tracker/CVE-2023-50495>
+  - libncursesw6, libtinfo6, ncurses-base, ncurses-bin, ncurses-term
+
+CVE-2023-51792 Buffer Overflow vulnerability in libde265 v1.0.12...
+  <https://security-tracker.debian.org/tracker/CVE-2023-51792>
+  - libde265-0
+
+CVE-2023-52355 An out-of-memory flaw was found in libtiff that...
+  <https://security-tracker.debian.org/tracker/CVE-2023-52355>
+  - libtiff6
+
+CVE-2023-52425 libexpat through 2.5.0 allows a denial of service...
+  <https://security-tracker.debian.org/tracker/CVE-2023-52425>
+  - libexpat1
+
+CVE-2023-52485 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2023-52485>
+  - linux-libc-dev
+
+CVE-2023-52586 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2023-52586>
+  - linux-libc-dev
+
+CVE-2023-52590 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2023-52590>
+  - linux-libc-dev
+
+CVE-2023-52591 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2023-52591>
+  - linux-libc-dev
+
+CVE-2023-52596 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2023-52596>
+  - linux-libc-dev
+
+CVE-2023-52624 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2023-52624>
+  - linux-libc-dev
+
+CVE-2023-52625 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2023-52625>
+  - linux-libc-dev
+
+CVE-2023-52629 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2023-52629>
+  - linux-libc-dev
+
+CVE-2023-52653 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2023-52653>
+  - linux-libc-dev
+
+CVE-2023-52671 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2023-52671>
+  - linux-libc-dev
+
+CVE-2023-52676 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2023-52676>
+  - linux-libc-dev
+
+CVE-2023-52751 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2023-52751>
+  - linux-libc-dev
+
+CVE-2023-52761 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2023-52761>
+  - linux-libc-dev
+
+CVE-2023-52888 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2023-52888>
+  - linux-libc-dev
+
+CVE-2023-52920 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2023-52920>
+  - linux-libc-dev
+
+CVE-2023-53154 parse_string in cJSON before 1.7.18 has a heap-based...
+  <https://security-tracker.debian.org/tracker/CVE-2023-53154>
+  - libcjson1
+
+CVE-2023-6240 A Marvin vulnerability side-channel leakage was found...
+  <https://security-tracker.debian.org/tracker/CVE-2023-6240>
+  - linux-libc-dev
+
+CVE-2023-6277 An out-of-memory flaw was found in libtiff. Passing a...
+  <https://security-tracker.debian.org/tracker/CVE-2023-6277>
+  - libtiff6
+
+CVE-2023-6879 Increasing the resolution of video frames, while...
+  <https://security-tracker.debian.org/tracker/CVE-2023-6879>
+  - libaom3
+
+CVE-2024-10041 A vulnerability was found in PAM. The secret...
+  <https://security-tracker.debian.org/tracker/CVE-2024-10041>
+  - libpam-modules, libpam-modules-bin, libpam-runtime, libpam0g,
+    libpam0g-dev
+
+CVE-2024-10525 In Eclipse Mosquitto, from version 1.3.2 through...
+  <https://security-tracker.debian.org/tracker/CVE-2024-10525>
+  - libmosquitto-dev, libmosquitto1, mosquitto, mosquitto-clients,
+    mosquitto-dev
+
+CVE-2024-21803 Use After Free vulnerability in Linux Linux kernel...
+  <https://security-tracker.debian.org/tracker/CVE-2024-21803>
+  - linux-libc-dev
+
+CVE-2024-2193 A Speculative Race Condition (SRC) vulnerability that...
+  <https://security-tracker.debian.org/tracker/CVE-2024-2193>
+  - linux-libc-dev
+
+CVE-2024-22365 linux-pam (aka Linux PAM) before 1.6.0 allows...
+  <https://security-tracker.debian.org/tracker/CVE-2024-22365>
+  - libpam-modules, libpam-modules-bin, libpam-runtime, libpam0g,
+    libpam0g-dev
+
+CVE-2024-23170 An issue was discovered in Mbed TLS 2.x before...
+  <https://security-tracker.debian.org/tracker/CVE-2024-23170>
+  - libmbedcrypto7, libmbedtls14, libmbedx509-1
+
+CVE-2024-23775 Integer Overflow vulnerability in Mbed TLS 2.x...
+  <https://security-tracker.debian.org/tracker/CVE-2024-23775>
+  - libmbedcrypto7, libmbedtls14, libmbedx509-1
+
+CVE-2024-24864 A race condition was found in the Linux kernel's...
+  <https://security-tracker.debian.org/tracker/CVE-2024-24864>
+  - linux-libc-dev
+
+CVE-2024-25740 A memory leak flaw was found in the UBI driver in...
+  <https://security-tracker.debian.org/tracker/CVE-2024-25740>
+  - linux-libc-dev
+
+CVE-2024-25742 In the Linux kernel before 6.9, an untrusted...
+  <https://security-tracker.debian.org/tracker/CVE-2024-25742>
+  - linux-libc-dev
+
+CVE-2024-25743 In the Linux kernel through 6.9, an untrusted...
+  <https://security-tracker.debian.org/tracker/CVE-2024-25743>
+  - linux-libc-dev
+
+CVE-2024-26672 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-26672>
+  - linux-libc-dev
+
+CVE-2024-26677 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-26677>
+  - linux-libc-dev
+
+CVE-2024-26691 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-26691>
+  - linux-libc-dev
+
+CVE-2024-26719 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-26719>
+  - linux-libc-dev
+
+CVE-2024-26740 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-26740>
+  - linux-libc-dev
+
+CVE-2024-26756 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-26756>
+  - linux-libc-dev
+
+CVE-2024-26757 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-26757>
+  - linux-libc-dev
+
+CVE-2024-26758 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-26758>
+  - linux-libc-dev
+
+CVE-2024-26842 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-26842>
+  - linux-libc-dev
+
+CVE-2024-26866 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-26866>
+  - linux-libc-dev
+
+CVE-2024-26869 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-26869>
+  - linux-libc-dev
+
+CVE-2024-26876 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-26876>
+  - linux-libc-dev
+
+CVE-2024-26913 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-26913>
+  - linux-libc-dev
+
+CVE-2024-26914 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-26914>
+  - linux-libc-dev
+
+CVE-2024-26930 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-26930>
+  - linux-libc-dev
+
+CVE-2024-26948 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-26948>
+  - linux-libc-dev
+
+CVE-2024-26962 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-26962>
+  - linux-libc-dev
+
+CVE-2024-27010 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-27010>
+  - linux-libc-dev
+
+CVE-2024-27011 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-27011>
+  - linux-libc-dev
+
+CVE-2024-27062 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-27062>
+  - linux-libc-dev
+
+CVE-2024-28755 An issue was discovered in Mbed TLS 3.5.x before...
+  <https://security-tracker.debian.org/tracker/CVE-2024-28755>
+  - libmbedcrypto7, libmbedtls14, libmbedx509-1
+
+CVE-2024-28960 An issue was discovered in Mbed TLS 2.18.0 through...
+  <https://security-tracker.debian.org/tracker/CVE-2024-28960>
+  - libmbedcrypto7, libmbedtls14, libmbedx509-1
+
+CVE-2024-2961 The iconv() function in the GNU C Library versions...
+  <https://security-tracker.debian.org/tracker/CVE-2024-2961>
+  - libc-bin, libc-dev-bin, libc-devtools, libc-l10n, libc6, libc6-dbg,
+    libc6-dev, locales
+
+CVE-2024-33599 nscd: Stack-based buffer overflow in netgroup cache ...
+  <https://security-tracker.debian.org/tracker/CVE-2024-33599>
+  - libc-bin, libc-dev-bin, libc-devtools, libc-l10n, libc6, libc6-dbg,
+    libc6-dev, locales
+
+CVE-2024-33600 nscd: Null pointer crashes after notfound response ...
+  <https://security-tracker.debian.org/tracker/CVE-2024-33600>
+  - libc-bin, libc-dev-bin, libc-devtools, libc-l10n, libc6, libc6-dbg,
+    libc6-dev, locales
+
+CVE-2024-33601 nscd: netgroup cache may terminate daemon on memory...
+  <https://security-tracker.debian.org/tracker/CVE-2024-33601>
+  - libc-bin, libc-dev-bin, libc-devtools, libc-l10n, libc6, libc6-dbg,
+    libc6-dev, locales
+
+CVE-2024-33602 nscd: netgroup cache assumes NSS callback uses...
+  <https://security-tracker.debian.org/tracker/CVE-2024-33602>
+  - libc-bin, libc-dev-bin, libc-devtools, libc-l10n, libc6, libc6-dbg,
+    libc6-dev, locales
+
+CVE-2024-33655 The DNS protocol in RFC 1035 and updates allows...
+  <https://security-tracker.debian.org/tracker/CVE-2024-33655>
+  - libunbound8
+
+CVE-2024-35195 Requests is a HTTP library. Prior to 2.32.0, when...
+  <https://security-tracker.debian.org/tracker/CVE-2024-35195>
+  - python3-requests
+
+CVE-2024-35784 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-35784>
+  - linux-libc-dev
+
+CVE-2024-35794 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-35794>
+  - linux-libc-dev
+
+CVE-2024-35799 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-35799>
+  - linux-libc-dev
+
+CVE-2024-35808 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-35808>
+  - linux-libc-dev
+
+CVE-2024-35843 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-35843>
+  - linux-libc-dev
+
+CVE-2024-35869 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-35869>
+  - linux-libc-dev
+
+CVE-2024-35878 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-35878>
+  - linux-libc-dev
+
+CVE-2024-35887 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-35887>
+  - linux-libc-dev
+
+CVE-2024-35904 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-35904>
+  - linux-libc-dev
+
+CVE-2024-35924 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-35924>
+  - linux-libc-dev
+
+CVE-2024-35929 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-35929>
+  - linux-libc-dev
+
+CVE-2024-35931 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-35931>
+  - linux-libc-dev
+
+CVE-2024-35945 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-35945>
+  - linux-libc-dev
+
+CVE-2024-35949 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-35949>
+  - linux-libc-dev
+
+CVE-2024-36013 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-36013>
+  - linux-libc-dev
+
+CVE-2024-36024 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-36024>
+  - linux-libc-dev
+
+CVE-2024-36350 A transient execution vulnerability in some AMD...
+  <https://security-tracker.debian.org/tracker/CVE-2024-36350>
+  - linux-libc-dev
+
+CVE-2024-36357 A transient execution vulnerability in some AMD...
+  <https://security-tracker.debian.org/tracker/CVE-2024-36357>
+  - linux-libc-dev
+
+CVE-2024-36911 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-36911>
+  - linux-libc-dev
+
+CVE-2024-36922 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-36922>
+  - linux-libc-dev
+
+CVE-2024-36949 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-36949>
+  - linux-libc-dev
+
+CVE-2024-36951 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-36951>
+  - linux-libc-dev
+
+CVE-2024-36968 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-36968>
+  - linux-libc-dev
+
+CVE-2024-37370 In MIT Kerberos 5 (aka krb5) before 1.21.3, an...
+  <https://security-tracker.debian.org/tracker/CVE-2024-37370>
+  - libgssapi-krb5-2, libk5crypto3, libkrb5-3, libkrb5support0
+
+CVE-2024-37371 In MIT Kerberos 5 (aka krb5) before 1.21.3, an...
+  <https://security-tracker.debian.org/tracker/CVE-2024-37371>
+  - libgssapi-krb5-2, libk5crypto3, libkrb5-3, libkrb5support0
+
+CVE-2024-38570 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-38570>
+  - linux-libc-dev
+
+CVE-2024-38608 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-38608>
+  - linux-libc-dev
+
+CVE-2024-38620 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-38620>
+  - linux-libc-dev
+
+CVE-2024-38630 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-38630>
+  - linux-libc-dev
+
+CVE-2024-38949 Heap Buffer Overflow vulnerability in Libde265...
+  <https://security-tracker.debian.org/tracker/CVE-2024-38949>
+  - libde265-0
+
+CVE-2024-38950 Heap Buffer Overflow vulnerability in Libde265...
+  <https://security-tracker.debian.org/tracker/CVE-2024-38950>
+  - libde265-0
+
+CVE-2024-3935 In Eclipse Mosquito, versions from 2.0.0 through...
+  <https://security-tracker.debian.org/tracker/CVE-2024-3935>
+  - libmosquitto-dev, libmosquitto1, mosquitto, mosquitto-clients,
+    mosquitto-dev
+
+CVE-2024-39479 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-39479>
+  - linux-libc-dev
+
+CVE-2024-39508 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-39508>
+  - linux-libc-dev
+
+CVE-2024-40965 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-40965>
+  - linux-libc-dev
+
+CVE-2024-40969 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-40969>
+  - linux-libc-dev
+
+CVE-2024-40975 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-40975>
+  - linux-libc-dev
+
+CVE-2024-40998 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-40998>
+  - linux-libc-dev
+
+CVE-2024-40999 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-40999>
+  - linux-libc-dev
+
+CVE-2024-41008 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-41008>
+  - linux-libc-dev
+
+CVE-2024-41013 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-41013>
+  - linux-libc-dev
+
+CVE-2024-41023 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-41023>
+  - linux-libc-dev
+
+CVE-2024-41067 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-41067>
+  - linux-libc-dev
+
+CVE-2024-41082 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-41082>
+  - linux-libc-dev
+
+CVE-2024-41935 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-41935>
+  - linux-libc-dev
+
+CVE-2024-42067 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-42067>
+  - linux-libc-dev
+
+CVE-2024-42079 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-42079>
+  - linux-libc-dev
+
+CVE-2024-42118 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-42118>
+  - linux-libc-dev
+
+CVE-2024-42123 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-42123>
+  - linux-libc-dev
+
+CVE-2024-42128 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-42128>
+  - linux-libc-dev
+
+CVE-2024-42135 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-42135>
+  - linux-libc-dev
+
+CVE-2024-42155 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-42155>
+  - linux-libc-dev
+
+CVE-2024-42156 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-42156>
+  - linux-libc-dev
+
+CVE-2024-42158 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-42158>
+  - linux-libc-dev
+
+CVE-2024-42162 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-42162>
+  - linux-libc-dev
+
+CVE-2024-43819 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-43819>
+  - linux-libc-dev
+
+CVE-2024-43824 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-43824>
+  - linux-libc-dev
+
+CVE-2024-43872 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-43872>
+  - linux-libc-dev
+
+CVE-2024-43886 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-43886>
+  - linux-libc-dev
+
+CVE-2024-43899 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-43899>
+  - linux-libc-dev
+
+CVE-2024-43901 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-43901>
+  - linux-libc-dev
+
+CVE-2024-44941 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-44941>
+  - linux-libc-dev
+
+CVE-2024-44942 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-44942>
+  - linux-libc-dev
+
+CVE-2024-44957 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-44957>
+  - linux-libc-dev
+
+CVE-2024-44963 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-44963>
+  - linux-libc-dev
+
+CVE-2024-44972 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-44972>
+  - linux-libc-dev
+
+CVE-2024-45015 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-45015>
+  - linux-libc-dev
+
+CVE-2024-45490 An issue was discovered in libexpat before 2.6.3....
+  <https://security-tracker.debian.org/tracker/CVE-2024-45490>
+  - libexpat1
+
+CVE-2024-45491 An issue was discovered in libexpat before 2.6.3....
+  <https://security-tracker.debian.org/tracker/CVE-2024-45491>
+  - libexpat1
+
+CVE-2024-45492 An issue was discovered in libexpat before 2.6.3....
+  <https://security-tracker.debian.org/tracker/CVE-2024-45492>
+  - libexpat1
+
+CVE-2024-46678 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-46678>
+  - linux-libc-dev
+
+CVE-2024-46681 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-46681>
+  - linux-libc-dev
+
+CVE-2024-46727 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-46727>
+  - linux-libc-dev
+
+CVE-2024-46728 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-46728>
+  - linux-libc-dev
+
+CVE-2024-46729 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-46729>
+  - linux-libc-dev
+
+CVE-2024-46730 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-46730>
+  - linux-libc-dev
+
+CVE-2024-46754 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-46754>
+  - linux-libc-dev
+
+CVE-2024-46760 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-46760>
+  - linux-libc-dev
+
+CVE-2024-46762 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-46762>
+  - linux-libc-dev
+
+CVE-2024-46765 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-46765>
+  - linux-libc-dev
+
+CVE-2024-46775 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-46775>
+  - linux-libc-dev
+
+CVE-2024-46776 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-46776>
+  - linux-libc-dev
+
+CVE-2024-46787 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-46787>
+  - linux-libc-dev
+
+CVE-2024-46806 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-46806>
+  - linux-libc-dev
+
+CVE-2024-46808 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-46808>
+  - linux-libc-dev
+
+CVE-2024-46811 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-46811>
+  - linux-libc-dev
+
+CVE-2024-46813 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-46813>
+  - linux-libc-dev
+
+CVE-2024-46825 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-46825>
+  - linux-libc-dev
+
+CVE-2024-46834 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-46834>
+  - linux-libc-dev
+
+CVE-2024-46842 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-46842>
+  - linux-libc-dev
+
+CVE-2024-46860 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-46860>
+  - linux-libc-dev
+
+CVE-2024-46870 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-46870>
+  - linux-libc-dev
+
+CVE-2024-47081 Requests is a HTTP library. Due to a URL parsing...
+  <https://security-tracker.debian.org/tracker/CVE-2024-47081>
+  - python3-requests
+
+CVE-2024-47141 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-47141>
+  - linux-libc-dev
+
+CVE-2024-47658 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-47658>
+  - linux-libc-dev
+
+CVE-2024-47661 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-47661>
+  - linux-libc-dev
+
+CVE-2024-47662 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-47662>
+  - linux-libc-dev
+
+CVE-2024-47666 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-47666>
+  - linux-libc-dev
+
+CVE-2024-47691 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-47691>
+  - linux-libc-dev
+
+CVE-2024-47703 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-47703>
+  - linux-libc-dev
+
+CVE-2024-47704 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-47704>
+  - linux-libc-dev
+
+CVE-2024-47794 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-47794>
+  - linux-libc-dev
+
+CVE-2024-47809 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-47809>
+  - linux-libc-dev
+
+CVE-2024-48875 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-48875>
+  - linux-libc-dev
+
+CVE-2024-49568 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-49568>
+  - linux-libc-dev
+
+CVE-2024-49569 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-49569>
+  - linux-libc-dev
+
+CVE-2024-49893 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-49893>
+  - linux-libc-dev
+
+CVE-2024-49901 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-49901>
+  - linux-libc-dev
+
+CVE-2024-49906 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-49906>
+  - linux-libc-dev
+
+CVE-2024-49908 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-49908>
+  - linux-libc-dev
+
+CVE-2024-49910 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-49910>
+  - linux-libc-dev
+
+CVE-2024-49914 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-49914>
+  - linux-libc-dev
+
+CVE-2024-49916 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-49916>
+  - linux-libc-dev
+
+CVE-2024-49918 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-49918>
+  - linux-libc-dev
+
+CVE-2024-49919 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-49919>
+  - linux-libc-dev
+
+CVE-2024-49920 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-49920>
+  - linux-libc-dev
+
+CVE-2024-49921 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-49921>
+  - linux-libc-dev
+
+CVE-2024-49922 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-49922>
+  - linux-libc-dev
+
+CVE-2024-49923 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-49923>
+  - linux-libc-dev
+
+CVE-2024-49926 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-49926>
+  - linux-libc-dev
+
+CVE-2024-49932 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-49932>
+  - linux-libc-dev
+
+CVE-2024-49940 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-49940>
+  - linux-libc-dev
+
+CVE-2024-49945 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-49945>
+  - linux-libc-dev
+
+CVE-2024-49968 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-49968>
+  - linux-libc-dev
+
+CVE-2024-49970 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-49970>
+  - linux-libc-dev
+
+CVE-2024-49972 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-49972>
+  - linux-libc-dev
+
+CVE-2024-50017 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-50017>
+  - linux-libc-dev
+
+CVE-2024-50028 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-50028>
+  - linux-libc-dev
+
+CVE-2024-50057 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-50057>
+  - linux-libc-dev
+
+CVE-2024-50112 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-50112>
+  - linux-libc-dev
+
+CVE-2024-50135 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-50135>
+  - linux-libc-dev
+
+CVE-2024-50166 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-50166>
+  - linux-libc-dev
+
+CVE-2024-50211 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-50211>
+  - linux-libc-dev
+
+CVE-2024-50217 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-50217>
+  - linux-libc-dev
+
+CVE-2024-50277 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-50277>
+  - linux-libc-dev
+
+CVE-2024-50289 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-50289>
+  - linux-libc-dev
+
+CVE-2024-50298 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-50298>
+  - linux-libc-dev
+
+CVE-2024-50602 An issue was discovered in libexpat before 2.6.4....
+  <https://security-tracker.debian.org/tracker/CVE-2024-50602>
+  - libexpat1
+
+CVE-2024-52559 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-52559>
+  - linux-libc-dev
+
+CVE-2024-53050 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-53050>
+  - linux-libc-dev
+
+CVE-2024-53051 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-53051>
+  - linux-libc-dev
+
+CVE-2024-53068 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-53068>
+  - linux-libc-dev
+
+CVE-2024-53079 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-53079>
+  - linux-libc-dev
+
+CVE-2024-53090 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-53090>
+  - linux-libc-dev
+
+CVE-2024-53094 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-53094>
+  - linux-libc-dev
+
+CVE-2024-53095 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-53095>
+  - linux-libc-dev
+
+CVE-2024-53108 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-53108>
+  - linux-libc-dev
+
+CVE-2024-53114 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-53114>
+  - linux-libc-dev
+
+CVE-2024-53133 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-53133>
+  - linux-libc-dev
+
+CVE-2024-53147 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-53147>
+  - linux-libc-dev
+
+CVE-2024-53168 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-53168>
+  - linux-libc-dev
+
+CVE-2024-53177 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-53177>
+  - linux-libc-dev
+
+CVE-2024-53179 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-53179>
+  - linux-libc-dev
+
+CVE-2024-53187 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-53187>
+  - linux-libc-dev
+
+CVE-2024-53195 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-53195>
+  - linux-libc-dev
+
+CVE-2024-53216 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-53216>
+  - linux-libc-dev
+
+CVE-2024-53218 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-53218>
+  - linux-libc-dev
+
+CVE-2024-53219 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-53219>
+  - linux-libc-dev
+
+CVE-2024-53221 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-53221>
+  - linux-libc-dev
+
+CVE-2024-53224 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-53224>
+  - linux-libc-dev
+
+CVE-2024-54456 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-54456>
+  - linux-libc-dev
+
+CVE-2024-54683 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-54683>
+  - linux-libc-dev
+
+CVE-2024-56433 shadow-utils (aka shadow) 4.4 through 4.17.0...
+  <https://security-tracker.debian.org/tracker/CVE-2024-56433>
+  - login, passwd
+
+CVE-2024-56538 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-56538>
+  - linux-libc-dev
+
+CVE-2024-56544 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-56544>
+  - linux-libc-dev
+
+CVE-2024-56565 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-56565>
+  - linux-libc-dev
+
+CVE-2024-56566 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-56566>
+  - linux-libc-dev
+
+CVE-2024-56583 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-56583>
+  - linux-libc-dev
+
+CVE-2024-56588 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-56588>
+  - linux-libc-dev
+
+CVE-2024-56591 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-56591>
+  - linux-libc-dev
+
+CVE-2024-56592 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-56592>
+  - linux-libc-dev
+
+CVE-2024-56611 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-56611>
+  - linux-libc-dev
+
+CVE-2024-56641 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-56641>
+  - linux-libc-dev
+
+CVE-2024-56647 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-56647>
+  - linux-libc-dev
+
+CVE-2024-56692 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-56692>
+  - linux-libc-dev
+
+CVE-2024-56712 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-56712>
+  - linux-libc-dev
+
+CVE-2024-56775 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-56775>
+  - linux-libc-dev
+
+CVE-2024-56782 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-56782>
+  - linux-libc-dev
+
+CVE-2024-57795 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-57795>
+  - linux-libc-dev
+
+CVE-2024-57809 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-57809>
+  - linux-libc-dev
+
+CVE-2024-57843 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-57843>
+  - linux-libc-dev
+
+CVE-2024-57852 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-57852>
+  - linux-libc-dev
+
+CVE-2024-57857 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-57857>
+  - linux-libc-dev
+
+CVE-2024-57872 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-57872>
+  - linux-libc-dev
+
+CVE-2024-57875 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-57875>
+  - linux-libc-dev
+
+CVE-2024-57883 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-57883>
+  - linux-libc-dev
+
+CVE-2024-57888 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-57888>
+  - linux-libc-dev
+
+CVE-2024-57898 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-57898>
+  - linux-libc-dev
+
+CVE-2024-57899 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-57899>
+  - linux-libc-dev
+
+CVE-2024-57900 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-57900>
+  - linux-libc-dev
+
+CVE-2024-57924 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-57924>
+  - linux-libc-dev
+
+CVE-2024-57952 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-57952>
+  - linux-libc-dev
+
+CVE-2024-57974 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-57974>
+  - linux-libc-dev
+
+CVE-2024-57975 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-57975>
+  - linux-libc-dev
+
+CVE-2024-57976 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-57976>
+  - linux-libc-dev
+
+CVE-2024-57982 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-57982>
+  - linux-libc-dev
+
+CVE-2024-57984 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-57984>
+  - linux-libc-dev
+
+CVE-2024-58012 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-58012>
+  - linux-libc-dev
+
+CVE-2024-58053 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-58053>
+  - linux-libc-dev
+
+CVE-2024-58089 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-58089>
+  - linux-libc-dev
+
+CVE-2024-58093 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-58093>
+  - linux-libc-dev
+
+CVE-2024-58094 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-58094>
+  - linux-libc-dev
+
+CVE-2024-58095 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-58095>
+  - linux-libc-dev
+
+CVE-2024-58096 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-58096>
+  - linux-libc-dev
+
+CVE-2024-58097 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-58097>
+  - linux-libc-dev
+
+CVE-2024-58098 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-58098>
+  - linux-libc-dev
+
+CVE-2024-58100 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-58100>
+  - linux-libc-dev
+
+CVE-2024-58237 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2024-58237>
+  - linux-libc-dev
+
+CVE-2024-6345 A vulnerability in the package_index module of...
+  <https://security-tracker.debian.org/tracker/CVE-2024-6345>
+  - python3-pkg-resources
+
+CVE-2024-8176 A stack overflow vulnerability exists in the libexpat...
+  <https://security-tracker.debian.org/tracker/CVE-2024-8176>
+  - libexpat1
+
+CVE-2024-8376 In Eclipse Mosquitto up to version 2.0.18a, an...
+  <https://security-tracker.debian.org/tracker/CVE-2024-8376>
+  - libmosquitto-dev, libmosquitto1, mosquitto, mosquitto-clients,
+    mosquitto-dev
+
+CVE-2024-8508 NLnet Labs Unbound up to and including version 1.21.0...
+  <https://security-tracker.debian.org/tracker/CVE-2024-8508>
+  - libunbound8
+
+CVE-2025-0395 When the assert() function in the GNU C Library...
+  <https://security-tracker.debian.org/tracker/CVE-2025-0395>
+  - libc-bin, libc-dev-bin, libc-devtools, libc-l10n, libc6, libc6-dbg,
+    libc6-dev, locales
+
+CVE-2025-21634 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-21634>
+  - linux-libc-dev
+
+CVE-2025-21635 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-21635>
+  - linux-libc-dev
+
+CVE-2025-21651 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-21651>
+  - linux-libc-dev
+
+CVE-2025-21656 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-21656>
+  - linux-libc-dev
+
+CVE-2025-21682 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-21682>
+  - linux-libc-dev
+
+CVE-2025-21696 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-21696>
+  - linux-libc-dev
+
+CVE-2025-21714 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-21714>
+  - linux-libc-dev
+
+CVE-2025-21751 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-21751>
+  - linux-libc-dev
+
+CVE-2025-21759 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-21759>
+  - linux-libc-dev
+
+CVE-2025-21768 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-21768>
+  - linux-libc-dev
+
+CVE-2025-21801 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-21801>
+  - linux-libc-dev
+
+CVE-2025-21816 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-21816>
+  - linux-libc-dev
+
+CVE-2025-21831 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-21831>
+  - linux-libc-dev
+
+CVE-2025-21861 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-21861>
+  - linux-libc-dev
+
+CVE-2025-21863 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-21863>
+  - linux-libc-dev
+
+CVE-2025-21872 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-21872>
+  - linux-libc-dev
+
+CVE-2025-21885 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-21885>
+  - linux-libc-dev
+
+CVE-2025-21894 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-21894>
+  - linux-libc-dev
+
+CVE-2025-21927 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-21927>
+  - linux-libc-dev
+
+CVE-2025-21969 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-21969>
+  - linux-libc-dev
+
+CVE-2025-21976 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-21976>
+  - linux-libc-dev
+
+CVE-2025-21985 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-21985>
+  - linux-libc-dev
+
+CVE-2025-22022 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-22022>
+  - linux-libc-dev
+
+CVE-2025-22026 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-22026>
+  - linux-libc-dev
+
+CVE-2025-22028 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-22028>
+  - linux-libc-dev
+
+CVE-2025-22053 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-22053>
+  - linux-libc-dev
+
+CVE-2025-22057 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-22057>
+  - linux-libc-dev
+
+CVE-2025-22083 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-22083>
+  - linux-libc-dev
+
+CVE-2025-22090 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-22090>
+  - linux-libc-dev
+
+CVE-2025-22103 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-22103>
+  - linux-libc-dev
+
+CVE-2025-22104 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-22104>
+  - linux-libc-dev
+
+CVE-2025-22107 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-22107>
+  - linux-libc-dev
+
+CVE-2025-22109 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-22109>
+  - linux-libc-dev
+
+CVE-2025-22121 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-22121>
+  - linux-libc-dev
+
+CVE-2025-22125 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-22125>
+  - linux-libc-dev
+
+CVE-2025-22127 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-22127>
+  - linux-libc-dev
+
+CVE-2025-23130 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-23130>
+  - linux-libc-dev
+
+CVE-2025-23131 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-23131>
+  - linux-libc-dev
+
+CVE-2025-23132 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-23132>
+  - linux-libc-dev
+
+CVE-2025-23143 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-23143>
+  - linux-libc-dev
+
+CVE-2025-24528 Prevent overflow when calculating ulog block size
+  <https://security-tracker.debian.org/tracker/CVE-2025-24528>
+  - libgssapi-krb5-2, libk5crypto3, libkrb5-3, libkrb5support0
+
+CVE-2025-27558 IEEE P802.11-REVme D1.1 through D7.0 allows...
+  <https://security-tracker.debian.org/tracker/CVE-2025-27558>
+  - linux-libc-dev
+
+CVE-2025-27613 Gitk is a Tcl/Tk based Git history browser. Starting...
+  <https://security-tracker.debian.org/tracker/CVE-2025-27613>
+  - git, git-man
+
+CVE-2025-27614 Gitk is a Tcl/Tk based Git history browser. Starting...
+  <https://security-tracker.debian.org/tracker/CVE-2025-27614>
+  - git, git-man
+
+CVE-2025-27809 Mbed TLS before 2.28.10 and 3.x before 3.6.3, on the...
+  <https://security-tracker.debian.org/tracker/CVE-2025-27809>
+  - libmbedcrypto7, libmbedtls14, libmbedx509-1
+
+CVE-2025-27810 Mbed TLS before 2.28.10 and 3.x before 3.6.3, in...
+  <https://security-tracker.debian.org/tracker/CVE-2025-27810>
+  - libmbedcrypto7, libmbedtls14, libmbedx509-1
+
+CVE-2025-29088 In SQLite 3.49.0 before 3.49.1, certain argument...
+  <https://security-tracker.debian.org/tracker/CVE-2025-29088>
+  - libsqlite3-0
+
+CVE-2025-30258 In GnuPG before 2.5.5, if a user chooses to import a...
+  <https://security-tracker.debian.org/tracker/CVE-2025-30258>
+  - dirmngr, gnupg, gnupg-l10n, gnupg-utils, gpg, gpg-agent,
+    gpg-wks-client, gpg-wks-server, gpgconf, gpgsm, gpgv
+
+CVE-2025-32462 Sudo before 1.9.17p1, when used with a sudoers file...
+  <https://security-tracker.debian.org/tracker/CVE-2025-32462>
+  - sudo
+
+CVE-2025-32988 A flaw was found in GnuTLS. A double-free...
+  <https://security-tracker.debian.org/tracker/CVE-2025-32988>
+  - libgnutls-dane0, libgnutls30
+
+CVE-2025-32989 A heap-buffer-overread vulnerability was found in...
+  <https://security-tracker.debian.org/tracker/CVE-2025-32989>
+  - libgnutls-dane0, libgnutls30
+
+CVE-2025-32990 A heap-buffer-overflow (off-by-one) flaw was found...
+  <https://security-tracker.debian.org/tracker/CVE-2025-32990>
+  - libgnutls-dane0, libgnutls30
+
+CVE-2025-3576 A vulnerability in the MIT Kerberos implementation...
+  <https://security-tracker.debian.org/tracker/CVE-2025-3576>
+  - libgssapi-krb5-2, libk5crypto3, libkrb5-3, libkrb5support0
+
+CVE-2025-37745 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-37745>
+  - linux-libc-dev
+
+CVE-2025-37786 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-37786>
+  - linux-libc-dev
+
+CVE-2025-37799 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-37799>
+  - linux-libc-dev
+
+CVE-2025-37800 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-37800>
+  - linux-libc-dev
+
+CVE-2025-37807 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-37807>
+  - linux-libc-dev
+
+CVE-2025-37833 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-37833>
+  - linux-libc-dev
+
+CVE-2025-37834 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-37834>
+  - linux-libc-dev
+
+CVE-2025-37842 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-37842>
+  - linux-libc-dev
+
+CVE-2025-37853 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-37853>
+  - linux-libc-dev
+
+CVE-2025-37856 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-37856>
+  - linux-libc-dev
+
+CVE-2025-37870 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-37870>
+  - linux-libc-dev
+
+CVE-2025-37877 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-37877>
+  - linux-libc-dev
+
+CVE-2025-37878 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-37878>
+  - linux-libc-dev
+
+CVE-2025-37880 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-37880>
+  - linux-libc-dev
+
+CVE-2025-37882 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-37882>
+  - linux-libc-dev
+
+CVE-2025-37920 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-37920>
+  - linux-libc-dev
+
+CVE-2025-37925 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-37925>
+  - linux-libc-dev
+
+CVE-2025-37942 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-37942>
+  - linux-libc-dev
+
+CVE-2025-37954 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-37954>
+  - linux-libc-dev
+
+CVE-2025-37958 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-37958>
+  - linux-libc-dev
+
+CVE-2025-37968 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-37968>
+  - linux-libc-dev
+
+CVE-2025-37980 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-37980>
+  - linux-libc-dev
+
+CVE-2025-38000 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-38000>
+  - linux-libc-dev
+
+CVE-2025-38001 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-38001>
+  - linux-libc-dev
+
+CVE-2025-38003 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-38003>
+  - linux-libc-dev
+
+CVE-2025-38004 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-38004>
+  - linux-libc-dev
+
+CVE-2025-38014 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-38014>
+  - linux-libc-dev
+
+CVE-2025-38022 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-38022>
+  - linux-libc-dev
+
+CVE-2025-38029 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-38029>
+  - linux-libc-dev
+
+CVE-2025-38031 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-38031>
+  - linux-libc-dev
+
+CVE-2025-38034 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-38034>
+  - linux-libc-dev
+
+CVE-2025-38035 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-38035>
+  - linux-libc-dev
+
+CVE-2025-38037 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-38037>
+  - linux-libc-dev
+
+CVE-2025-38039 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-38039>
+  - linux-libc-dev
+
+CVE-2025-38040 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-38040>
+  - linux-libc-dev
+
+CVE-2025-38041 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-38041>
+  - linux-libc-dev
+
+CVE-2025-38042 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-38042>
+  - linux-libc-dev
+
+CVE-2025-38044 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-38044>
+  - linux-libc-dev
+
+CVE-2025-38045 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-38045>
+  - linux-libc-dev
+
+CVE-2025-38048 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-38048>
+  - linux-libc-dev
+
+CVE-2025-38051 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-38051>
+  - linux-libc-dev
+
+CVE-2025-38052 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-38052>
+  - linux-libc-dev
+
+CVE-2025-38057 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-38057>
+  - linux-libc-dev
+
+CVE-2025-38058 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-38058>
+  - linux-libc-dev
+
+CVE-2025-38059 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-38059>
+  - linux-libc-dev
+
+CVE-2025-38060 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-38060>
+  - linux-libc-dev
+
+CVE-2025-38061 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-38061>
+  - linux-libc-dev
+
+CVE-2025-38062 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-38062>
+  - linux-libc-dev
+
+CVE-2025-38063 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-38063>
+  - linux-libc-dev
+
+CVE-2025-38064 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-38064>
+  - linux-libc-dev
+
+CVE-2025-38065 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-38065>
+  - linux-libc-dev
+
+CVE-2025-38066 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-38066>
+  - linux-libc-dev
+
+CVE-2025-38067 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-38067>
+  - linux-libc-dev
+
+CVE-2025-38068 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-38068>
+  - linux-libc-dev
+
+CVE-2025-38069 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-38069>
+  - linux-libc-dev
+
+CVE-2025-38071 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-38071>
+  - linux-libc-dev
+
+CVE-2025-38072 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-38072>
+  - linux-libc-dev
+
+CVE-2025-38073 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-38073>
+  - linux-libc-dev
+
+CVE-2025-38074 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-38074>
+  - linux-libc-dev
+
+CVE-2025-38075 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-38075>
+  - linux-libc-dev
+
+CVE-2025-38078 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-38078>
+  - linux-libc-dev
+
+CVE-2025-38079 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-38079>
+  - linux-libc-dev
+
+CVE-2025-38080 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-38080>
+  - linux-libc-dev
+
+CVE-2025-38083 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-38083>
+  - linux-libc-dev
+
+CVE-2025-38084 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-38084>
+  - linux-libc-dev
+
+CVE-2025-38085 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-38085>
+  - linux-libc-dev
+
+CVE-2025-38086 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-38086>
+  - linux-libc-dev
+
+CVE-2025-38090 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-38090>
+  - linux-libc-dev
+
+CVE-2025-38096 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-38096>
+  - linux-libc-dev
+
+CVE-2025-38097 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-38097>
+  - linux-libc-dev
+
+CVE-2025-38098 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-38098>
+  - linux-libc-dev
+
+CVE-2025-38099 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-38099>
+  - linux-libc-dev
+
+CVE-2025-38100 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-38100>
+  - linux-libc-dev
+
+CVE-2025-38102 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-38102>
+  - linux-libc-dev
+
+CVE-2025-38103 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-38103>
+  - linux-libc-dev
+
+CVE-2025-38105 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-38105>
+  - linux-libc-dev
+
+CVE-2025-38107 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-38107>
+  - linux-libc-dev
+
+CVE-2025-38108 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-38108>
+  - linux-libc-dev
+
+CVE-2025-38111 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-38111>
+  - linux-libc-dev
+
+CVE-2025-38112 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-38112>
+  - linux-libc-dev
+
+CVE-2025-38115 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-38115>
+  - linux-libc-dev
+
+CVE-2025-38117 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-38117>
+  - linux-libc-dev
+
+CVE-2025-38119 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-38119>
+  - linux-libc-dev
+
+CVE-2025-38125 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-38125>
+  - linux-libc-dev
+
+CVE-2025-38126 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-38126>
+  - linux-libc-dev
+
+CVE-2025-38127 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-38127>
+  - linux-libc-dev
+
+CVE-2025-38129 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-38129>
+  - linux-libc-dev
+
+CVE-2025-38135 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-38135>
+  - linux-libc-dev
+
+CVE-2025-38136 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-38136>
+  - linux-libc-dev
+
+CVE-2025-38138 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-38138>
+  - linux-libc-dev
+
+CVE-2025-38143 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-38143>
+  - linux-libc-dev
+
+CVE-2025-38145 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-38145>
+  - linux-libc-dev
+
+CVE-2025-38146 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-38146>
+  - linux-libc-dev
+
+CVE-2025-38147 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-38147>
+  - linux-libc-dev
+
+CVE-2025-38148 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-38148>
+  - linux-libc-dev
+
+CVE-2025-38153 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-38153>
+  - linux-libc-dev
+
+CVE-2025-38157 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-38157>
+  - linux-libc-dev
+
+CVE-2025-38159 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-38159>
+  - linux-libc-dev
+
+CVE-2025-38160 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-38160>
+  - linux-libc-dev
+
+CVE-2025-38161 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-38161>
+  - linux-libc-dev
+
+CVE-2025-38162 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-38162>
+  - linux-libc-dev
+
+CVE-2025-38163 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-38163>
+  - linux-libc-dev
+
+CVE-2025-38166 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-38166>
+  - linux-libc-dev
+
+CVE-2025-38173 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-38173>
+  - linux-libc-dev
+
+CVE-2025-38174 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-38174>
+  - linux-libc-dev
+
+CVE-2025-38180 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-38180>
+  - linux-libc-dev
+
+CVE-2025-38181 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-38181>
+  - linux-libc-dev
+
+CVE-2025-38184 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-38184>
+  - linux-libc-dev
+
+CVE-2025-38185 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-38185>
+  - linux-libc-dev
+
+CVE-2025-38189 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-38189>
+  - linux-libc-dev
+
+CVE-2025-38190 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-38190>
+  - linux-libc-dev
+
+CVE-2025-38192 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-38192>
+  - linux-libc-dev
+
+CVE-2025-38193 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-38193>
+  - linux-libc-dev
+
+CVE-2025-38194 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-38194>
+  - linux-libc-dev
+
+CVE-2025-38197 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-38197>
+  - linux-libc-dev
+
+CVE-2025-38198 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-38198>
+  - linux-libc-dev
+
+CVE-2025-38200 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-38200>
+  - linux-libc-dev
+
+CVE-2025-38201 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-38201>
+  - linux-libc-dev
+
+CVE-2025-38207 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-38207>
+  - linux-libc-dev
+
+CVE-2025-38208 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-38208>
+  - linux-libc-dev
+
+CVE-2025-38211 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-38211>
+  - linux-libc-dev
+
+CVE-2025-38212 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-38212>
+  - linux-libc-dev
+
+CVE-2025-38213 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-38213>
+  - linux-libc-dev
+
+CVE-2025-38214 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-38214>
+  - linux-libc-dev
+
+CVE-2025-38215 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-38215>
+  - linux-libc-dev
+
+CVE-2025-38218 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-38218>
+  - linux-libc-dev
+
+CVE-2025-38219 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-38219>
+  - linux-libc-dev
+
+CVE-2025-38222 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-38222>
+  - linux-libc-dev
+
+CVE-2025-38226 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-38226>
+  - linux-libc-dev
+
+CVE-2025-38227 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-38227>
+  - linux-libc-dev
+
+CVE-2025-38229 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-38229>
+  - linux-libc-dev
+
+CVE-2025-38230 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-38230>
+  - linux-libc-dev
+
+CVE-2025-38231 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-38231>
+  - linux-libc-dev
+
+CVE-2025-38232 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-38232>
+  - linux-libc-dev
+
+CVE-2025-38234 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-38234>
+  - linux-libc-dev
+
+CVE-2025-38237 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-38237>
+  - linux-libc-dev
+
+CVE-2025-38245 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-38245>
+  - linux-libc-dev
+
+CVE-2025-38249 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-38249>
+  - linux-libc-dev
+
+CVE-2025-38250 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-38250>
+  - linux-libc-dev
+
+CVE-2025-38251 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-38251>
+  - linux-libc-dev
+
+CVE-2025-38257 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-38257>
+  - linux-libc-dev
+
+CVE-2025-38259 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-38259>
+  - linux-libc-dev
+
+CVE-2025-38261 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-38261>
+  - linux-libc-dev
+
+CVE-2025-38262 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-38262>
+  - linux-libc-dev
+
+CVE-2025-38263 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-38263>
+  - linux-libc-dev
+
+CVE-2025-38264 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-38264>
+  - linux-libc-dev
+
+CVE-2025-38269 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-38269>
+  - linux-libc-dev
+
+CVE-2025-38272 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-38272>
+  - linux-libc-dev
+
+CVE-2025-38273 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-38273>
+  - linux-libc-dev
+
+CVE-2025-38280 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-38280>
+  - linux-libc-dev
+
+CVE-2025-38285 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-38285>
+  - linux-libc-dev
+
+CVE-2025-38286 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-38286>
+  - linux-libc-dev
+
+CVE-2025-38293 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-38293>
+  - linux-libc-dev
+
+CVE-2025-38298 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-38298>
+  - linux-libc-dev
+
+CVE-2025-38300 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-38300>
+  - linux-libc-dev
+
+CVE-2025-38310 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-38310>
+  - linux-libc-dev
+
+CVE-2025-38312 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-38312>
+  - linux-libc-dev
+
+CVE-2025-38313 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-38313>
+  - linux-libc-dev
+
+CVE-2025-38319 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-38319>
+  - linux-libc-dev
+
+CVE-2025-38320 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-38320>
+  - linux-libc-dev
+
+CVE-2025-38321 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-38321>
+  - linux-libc-dev
+
+CVE-2025-38323 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-38323>
+  - linux-libc-dev
+
+CVE-2025-38324 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-38324>
+  - linux-libc-dev
+
+CVE-2025-38326 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-38326>
+  - linux-libc-dev
+
+CVE-2025-38328 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-38328>
+  - linux-libc-dev
+
+CVE-2025-38331 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-38331>
+  - linux-libc-dev
+
+CVE-2025-38332 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-38332>
+  - linux-libc-dev
+
+CVE-2025-38333 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-38333>
+  - linux-libc-dev
+
+CVE-2025-38336 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-38336>
+  - linux-libc-dev
+
+CVE-2025-38337 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-38337>
+  - linux-libc-dev
+
+CVE-2025-38342 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-38342>
+  - linux-libc-dev
+
+CVE-2025-38344 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-38344>
+  - linux-libc-dev
+
+CVE-2025-38345 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-38345>
+  - linux-libc-dev
+
+CVE-2025-38346 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-38346>
+  - linux-libc-dev
+
+CVE-2025-38347 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-38347>
+  - linux-libc-dev
+
+CVE-2025-38348 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-38348>
+  - linux-libc-dev
+
+CVE-2025-38350 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-38350>
+  - linux-libc-dev
+
+CVE-2025-38352 In the Linux kernel, the following vulnerability has...
+  <https://security-tracker.debian.org/tracker/CVE-2025-38352>
+  - linux-libc-dev
+
+CVE-2025-40909 Perl threads have a working directory race condition...
+  <https://security-tracker.debian.org/tracker/CVE-2025-40909>
+  - libperl5.36, perl, perl-base, perl-modules-5.36
+
+CVE-2025-4373 A flaw was found in GLib, which is vulnerable to an...
+  <https://security-tracker.debian.org/tracker/CVE-2025-4373>
+  - libglib2.0-0, libglib2.0-data
+
+CVE-2025-4516 There is an issue in CPython when using...
+  <https://security-tracker.debian.org/tracker/CVE-2025-4516>
+  - libpython3.11, libpython3.11-minimal, libpython3.11-stdlib,
+    python3.11, python3.11-minimal
+
+CVE-2025-45582 GNU Tar through 1.35 allows file overwrite via...
+  <https://security-tracker.debian.org/tracker/CVE-2025-45582>
+  - tar
+
+CVE-2025-46835 Git GUI allows you to use the Git source control...
+  <https://security-tracker.debian.org/tracker/CVE-2025-46835>
+  - git, git-man
+
+CVE-2025-47273 setuptools is a package that allows users to...
+  <https://security-tracker.debian.org/tracker/CVE-2025-47273>
+  - python3-pkg-resources
+
+CVE-2025-47917 Mbed TLS before 3.6.4 allows a use-after-free in...
+  <https://security-tracker.debian.org/tracker/CVE-2025-47917>
+  - libmbedcrypto7, libmbedtls14, libmbedx509-1
+
+CVE-2025-4802 Untrusted LD_LIBRARY_PATH environment variable...
+  <https://security-tracker.debian.org/tracker/CVE-2025-4802>
+  - libc-bin, libc-dev-bin, libc-devtools, libc-l10n, libc6, libc6-dbg,
+    libc6-dev, locales
+
+CVE-2025-48060 jq is a command-line JSON processor. In versions up...
+  <https://security-tracker.debian.org/tracker/CVE-2025-48060>
+  - jq, libjq1
+
+CVE-2025-48384 Git is a fast, scalable, distributed revision...
+  <https://security-tracker.debian.org/tracker/CVE-2025-48384>
+  - git, git-man
+
+CVE-2025-48385 Git is a fast, scalable, distributed revision...
+  <https://security-tracker.debian.org/tracker/CVE-2025-48385>
+  - git, git-man
+
+CVE-2025-48386 Git is a fast, scalable, distributed revision...
+  <https://security-tracker.debian.org/tracker/CVE-2025-48386>
+  - git, git-man
+
+CVE-2025-48965 Mbed TLS before 3.6.4 has a NULL pointer dereference...
+  <https://security-tracker.debian.org/tracker/CVE-2025-48965>
+  - libmbedcrypto7, libmbedtls14, libmbedx509-1
+
+CVE-2025-49794 A use-after-free vulnerability was found in libxml2....
+  <https://security-tracker.debian.org/tracker/CVE-2025-49794>
+  - libxml2
+
+CVE-2025-49796 A vulnerability was found in libxml2. Processing...
+  <https://security-tracker.debian.org/tracker/CVE-2025-49796>
+  - libxml2
+
+CVE-2025-50181 urllib3 is a user-friendly HTTP client library for...
+  <https://security-tracker.debian.org/tracker/CVE-2025-50181>
+  - python3-urllib3
+
+CVE-2025-50182 urllib3 is a user-friendly HTTP client library for...
+  <https://security-tracker.debian.org/tracker/CVE-2025-50182>
+  - python3-urllib3
+
+CVE-2025-52496 Mbed TLS before 3.6.4 has a race condition in AESNI...
+  <https://security-tracker.debian.org/tracker/CVE-2025-52496>
+  - libmbedcrypto7, libmbedtls14, libmbedx509-1
+
+CVE-2025-52497 Mbed TLS before 3.6.4 has a PEM parsing one-byte...
+  <https://security-tracker.debian.org/tracker/CVE-2025-52497>
+  - libmbedcrypto7, libmbedtls14, libmbedx509-1
+
+CVE-2025-53905 Vim is an open source, command line text editor....
+  <https://security-tracker.debian.org/tracker/CVE-2025-53905>
+  - vim, vim-common, vim-runtime, vim-tiny, xxd
+
+CVE-2025-53906 Vim is an open source, command line text editor....
+  <https://security-tracker.debian.org/tracker/CVE-2025-53906>
+  - vim, vim-common, vim-runtime, vim-tiny, xxd
+
+CVE-2025-5994 A multi-vendor cache poisoning vulnerability named...
+  <https://security-tracker.debian.org/tracker/CVE-2025-5994>
+  - libunbound8
+
+CVE-2025-6020 A flaw was found in linux-pam. The module...
+  <https://security-tracker.debian.org/tracker/CVE-2025-6020>
+  - libpam-modules, libpam-modules-bin, libpam-runtime, libpam0g,
+    libpam0g-dev
+
+CVE-2025-6021 A flaw was found in libxml2's xmlBuildQName function,...
+  <https://security-tracker.debian.org/tracker/CVE-2025-6021>
+  - libxml2
+
+CVE-2025-6069 The html.parser.HTMLParser class had worse-case...
+  <https://security-tracker.debian.org/tracker/CVE-2025-6069>
+  - libpython3.11, libpython3.11-minimal, libpython3.11-stdlib,
+    python3.11, python3.11-minimal
+
+CVE-2025-6141 A vulnerability has been found in GNU ncurses up to...
+  <https://security-tracker.debian.org/tracker/CVE-2025-6141>
+  - libncursesw6, libtinfo6, ncurses-base, ncurses-bin, ncurses-term
+
+CVE-2025-6297 It was discovered that dpkg-deb does not properly...
+  <https://security-tracker.debian.org/tracker/CVE-2025-6297>
+  - dpkg, dpkg-dev, libdpkg-perl
+
+CVE-2025-6395 A NULL pointer dereference flaw was found in the...
+  <https://security-tracker.debian.org/tracker/CVE-2025-6395>
+  - libgnutls-dane0, libgnutls30
+
+CVE-2025-6965 There exists a vulnerability in SQLite versions...
+  <https://security-tracker.debian.org/tracker/CVE-2025-6965>
+  - libsqlite3-0
+
+CVE-2025-8058 The regcomp function in the GNU C library version...
+  <https://security-tracker.debian.org/tracker/CVE-2025-8058>
+  - libc-bin, libc-dev-bin, libc-devtools, libc-l10n, libc6, libc6-dbg,
+    libc6-dev, locales
+

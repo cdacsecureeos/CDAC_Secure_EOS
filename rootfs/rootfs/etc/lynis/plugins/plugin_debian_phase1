@@ -1,0 +1,431 @@
+#!/bin/sh
+
+#########################################################################
+#
+#    * DO NOT REMOVE *
+#-----------------------------------------------------
+# PLUGIN_AUTHOR=
+# PLUGIN_CATEGORY=Debian
+# PLUGIN_DESC=Debian tests
+# PLUGIN_NAME=debian
+# PLUGIN_VERSION=1.0.1
+# PLUGIN_REQUIRED_TESTS=
+#-----------------------------------------------------
+#
+#########################################################################
+#
+
+
+#########################################################################
+#
+# Add custom section to screen output
+InsertSection "Debian Tests"
+#
+#################################################################################
+# Constants
+
+# Declare reduced BINPATHS for Debian Tests
+DEBIAN_BINPATHS="/bin /sbin /usr/bin /usr/sbin /usr/local/bin /usr/local/sbin"
+
+#################################################################################
+# Start by scanning for any tools that will be required for later custom tests.
+#
+# This is basically a copy of the test from the file
+# /usr/share/lynis/include/binaries with a shorter list of files to look for.
+#
+# Some of the files we search for here may be repeated checks from the default
+# tests, but we look for them again due to local function dependencies.  It's a
+# tiny redundancy that doesn't slow the tests up significantly.
+
+# Test        : DEB-0001
+# Description : Check for system binaries
+# Notes       : Always perform this test, other tests depend on it.
+Register --test-no DEB-0001 --weight L --network NO --description "Check for system binaries required by Debian Tests"
+SCANNEDPATHS=""; N=0
+Display --indent 2 --text "- Checking for system binaries that are required by Debian Tests..."
+LogText "Status: Starting binary scan..."
+for SCANDIR in ${DEBIAN_BINPATHS}; do
+    LogText "Test: Checking binaries in directory ${SCANDIR}"
+    if [ -d ${SCANDIR} ]; then
+        Display --indent 4 --text "- Checking ${SCANDIR}... " --result FOUND --color GREEN
+        SCANNEDPATHS="${SCANNEDPATHS}, ${SCANDIR}"
+        LogText "Directory ${SCANDIR} exists. Starting directory scanning..."
+        FIND=`ls ${SCANDIR}`
+        for I in ${FIND}; do
+            N=`expr ${N} + 1`
+            BINARY="${SCANDIR}/${I}"
+            LogText "Binary: ${BINARY}"
+            # Optimized, much quicker (limited file access needed)
+            case ${I} in
+                apt-listbugs)           APTLISTBUGSBINARY=${BINARY};                              LogText "  Found known binary: apt-listbugs (System tool) - ${BINARY}"                 ;;
+                apt-listchanges)        APTLISTCHANGESBINARY=${BINARY};                           LogText "  Found known binary: apt-listchanges (System tool) - ${BINARY}"              ;;
+		needrestart)            NEEDRESTARTBINARY="${BINARY}";                            LogText "  Found known binary: needrestart (System tool) - ${BINARY}"                  ;;
+                cryptmount)             CRYPTMOUNTFOUND=1;      CRYPTMOUNTBINARY="${BINARY}";     LogText "  Found known binary: cryptmount (Encryption tool) - ${BINARY}"               ;;
+                cryptsetup)             CRYPTSETUPFOUND=1;      CRYPTSETUPBINARY="${BINARY}";     LogText "  Found known binary: cryptsetup (Encryption tool) - ${BINARY}"               ;;
+                ecryptfsd)              ECRYPTFSDFOUND=1;       ECRYPTFSDBINARY="${BINARY}";      LogText "  Found known binary: ecryptfsd (Layered Encryption) - ${BINARY}"             ;;
+                ecryptfs-migrate-home)  ECRYPTFSMIGRATEFOUND=1; ECRYPTFSMIGRATEBINARY=${BINARY};  LogText "  Found known binary: ecryptfs-migrate-home (Layered Encryption) - ${BINARY}" ;;
+                fail2ban-server)        FAIL2BANBINARY=${BINARY};                                 LogText "  Found known binary: fail2ban-server (Security tool) - ${BINARY}"            ;;
+                lvdisplay)              LVDISPLAYBINARY="${BINARY}";                              LogText "  Found known binary: lvdisplay (LVM tool) - ${BINARY}"                       ;;
+                mount)                  MOUNTBINARY="${BINARY}";                                  LogText "  Fount known binary: mount (File system tool) - ${BINARY}"                   ;;
+            esac
+        done
+      else
+        Display --indent 4 --text "- Checking ${SCANDIR}... " --result "NOT FOUND" --color WHITE
+        LogText "Directory ${SCANDIR} does NOT exist."
+    fi
+    LogTextBreak
+done
+SCANNEDPATHS=`echo ${SCANNEDPATHS} | sed 's/^, //g'`
+LogText "Discovered directories: ${SCANNEDPATHS}"
+
+LogText "DEB-0001 Result: found ${N} binaries"
+# Report "binaries_count=${N}"
+
+#################################################################################
+# Authentication modules (Tests:  DEB-02xx)
+
+Display --indent 2 --text "- Authentication:"
+LogText "Status: Starting Authentication checks..."
+
+Display --indent 4 --text "- PAM (Pluggable Authentication Modules):"
+
+# Test        : DEB-0280
+# Description : Checking if libpam-tmpdir is installed and enabled.
+LogText "Status: Checking if libpam-tmpdir is installed and enabled..."
+Register --test-no DEB-0280 --weight L --network NO --description "Checking if libpam-tmpdir is installed and enabled."
+if [ ${SKIPTEST} -eq 0 ]; then
+    FIND=`find /lib /usr/lib -name pam_tmpdir.so`
+    if [ ! "${FIND}" = "" ]; then
+        LogText " - libpam-tmpdir is installed."
+        AddHP 1 1
+        FIND2=`grep pam_tmpdir.so /etc/pam.d/common-session`
+        if [ ! "${FIND2}" = "" ]; then
+            Display --indent 6 --text "- libpam-tmpdir" --result "Installed and Enabled" --color GREEN
+            LogText " - libpam-tmpdir is enabled in common-session."
+            AddHP 1 1
+        else
+            Display --indent 6 --text "- libpam-tmpdir" --result "Installed but not Enabled" --color YELLOW
+            LogText " - libpam-tmpdir is not enabled in common-session."
+            AddHP 0 1
+        fi
+    else
+        Display --indent 6 --text "- libpam-tmpdir" --result "Not Installed" --color RED
+        LogText " - libpam-tmpdir is not installed."
+        AddHP 0 2
+        ReportSuggestion ${TEST_NO} "Install libpam-tmpdir to set \$TMP and \$TMPDIR for PAM sessions"
+    fi
+fi
+
+
+#################################################################################
+# File system (Tests: Deb-05xx)
+
+Display --indent 2 --text "- File System Checks:"
+LogText "Status: Starting file system checks..."
+
+# Test        : DEB-0510
+# Description : Checking if LVM Groups or file systems are stored on encrypted partitions (dm-crypt, cryptsetup & cryptmount)
+
+Display --indent 4 --text "- DM-Crypt, Cryptsetup & Cryptmount:"
+LogText "Status: Starting file system checks for dm-crypt, cryptsetup & cryptmount..."
+
+if [ ! "${MOUNTBINARY}" = ""  -a ! "${LVDISPLAYBINARY}" = "" -a ! "${CRYPTSETUPBINARY}" = "" ]; then PREQS_MET="YES"; else PREQS_MET="NO"; fi
+Register --test-no DEB-0510 --preqs-met ${PREQS_MET} --weight L --network NO --description "Checking if LVM volume groups or file systems are stored on encrypted partitions"
+if [ ${SKIPTEST} -eq 0 ]; then
+    LogText "Test: Checking file system mount points"
+    FIND=`${MOUNTBINARY} 2> /dev/null | grep -v "^[binfmt_misc|devpts|fusectl|hugetlbfs|none|proc|sysfs|systemd|tmpfs|udev]" | grep -v ecryptfs | awk '{ print $1 ":" $3 }'`
+    TESTED_LIST=""
+    if [ ! "${FIND}" = "" ]; then
+        LogText "Result: found one or more file system mount points"
+        for I in ${FIND}; do
+            # physical device
+            PDEV=${I%:*}
+            # Mount Point
+            MOUNTPOINT=${I#*:}
+            # Test if we've already checked this physical device.  If we are
+            # using bind mounts to mitigate issues with read-only file
+            # systems or to expand the size of one partition by bind
+            # mounting a directory to space on another drive then the bind
+            # mounts can cause a physical device to appear multiple times in
+            # the output of 'mount'.  This test makes sure we only test
+            # whether or not it is encrypted one time.
+            #
+            # As far as I know there is no way to have the bind mounts not
+            # listed in /etc/mtab, /proc/mounts, or the output of mount
+            # because the kernel does not distinguish between bind and
+            # other mounts.  To the kernel, it's just another mounted
+            # file system.
+            #
+            # Normal file systems are listed by 'mount' generally before
+            # those bind mounted on my systems, so forgoing a '| sort' on
+            # the FIND command appears to make sure that the mount points we
+            # care about are listed first and the bind second (which can
+            # and will be ignored in this test).
+            echo ${TESTED_LIST} | grep ${PDEV} > /dev/null
+            exitstatus=$?
+            if [ ${exitstatus} -eq 0 ]; then
+                # already tested this physical device, breaking out of the
+                # loop to the next item on the list.
+                LogText "- For ${MOUNTPOINT}: Already tested ${PDEV}, assuming bind mount and skipping."
+                continue
+            fi
+            LogText "Testing file system mount point: ${PDEV}"
+            case "${PDEV}" in
+                /dev/mapper/*)
+                    TEST_DEVICE=`${LVDISPLAYBINARY} -m ${PDEV} 2>/dev/null`
+                    exitstatus=$?
+                    if [ ${exitstatus} -ne 0 ]; then
+                        # If lvdisplay has a failing exit status, assign
+                        # PDEV as DEVICE.  Some partitions will be mounted
+                        # through /dev/mapper mappings but not be part of
+                        # LVM groups.
+                        DEVICE=${PDEV}
+                    else
+                        # If lvdisplay does not have a failing exit status,
+                        # then get the DEVICE from its output
+                        DEVICE=`echo ${TEST_DEVICE} | sed -e 's/.*Physical volume \(.*\) Physical.*/\1/'`
+                    fi
+                    ;;
+                * )
+                    DEVICE=${PDEV}
+                    ;;
+            esac
+            CRYPT=`${CRYPTSETUPBINARY} status ${DEVICE} 2>/dev/null`
+            exitstatus=$?
+            # It is possible that multiple partitions may be included within
+            # the same group (for LVM) and that group container may or may
+            # not be encrypted.  If that is so, you will gain or
+            # lose hardening points for each partition in the group.  Just
+            # as you would if they were individual partitions on the hard
+            # drive.
+            #
+            # Tests only apply to those partitions that are mounted when
+            # Lynis is run.  You will not gain or lose points for any
+            # partitions that are not mounted.
+            if [ ${exitstatus} -eq 0 ]; then
+                TYPE=`echo ${CRYPT} | grep "type:" | sed -e 's/.*type: \(.*\) cipher.*/\1/'`
+                if [ "a${TYPE}a" = "an/aa" ]; then
+                    # Partitions mounted via cryptmount will pass cryptsetup
+                    # with a valid exit status and will show as "active" but
+                    # will not show a type.
+                    if [ ! "${CRYPTMOUNTBINARY}" = "" ]; then
+                        # if cryptsetup exits with a valid exit status and
+                        # cryptmount is installed, then that may explain why
+                        # we are unable to determine the type from
+                        # cryptsetup's output.
+                        CIPHER=`echo ${CRYPT} | grep "cipher:" | sed -e 's/.*cipher: \(.*\) keysize.*/\1/'`
+                        Display --indent 6 --text "- Checking ${MOUNTPOINT} on ${DEVICE}" --result "Cryptmount? [Cipher: ${CIPHER}]" --color GREEN
+                        # We add a hardening point because we have verified that
+                        # the drive is encrypted even if we cannot determine the
+                        # 'type' with these tools.
+                        AddHP 1 1
+                    else
+                        # if cryptsetup exits with a valid exit status but
+                        # cryptmount is not installed then Display informs
+                        # the user that the test is uncertain of the
+                        # encryption status of the partition or drive.  It
+                        # will be up to the user to determine its status.
+                        Display --indent 6 --text "- Checking ${MOUNTPOINT} on ${DEVICE}" --result "Unknown Encryption Status" --color YELLOW
+                        #
+                        # We do not add a hardening point because it is possible
+                        # that the partition is encrypted but its status cannot
+                        # be verified by these tools.
+                        AddHP 0 1
+                    fi
+                else
+                    # cryptsetup exited with a valid exit status (0) and we
+                    # were able to determine the type of encryption used
+                    # from its output.
+                    AddHP 1 1
+                    Display --indent 6 --text "- Checking ${MOUNTPOINT} on ${DEVICE}" --result "ENCRYPTED (Type: ${TYPE})" --color GREEN
+                fi
+            else
+                # if cryptsetup exits with a non-zero exit status, then the
+                # drive or partition has not been encrypted in a manner that
+                # cryptsetup can  detect.  For the purposes of this test, it
+                # is considered to be not encrypted.
+                if [ ! "${MOUNTPOINT}" = "/boot" ]; then
+                    AddHP 0 1
+                    Display --indent 6 --text "- Checking ${MOUNTPOINT} on ${DEVICE}" --result "NOT ENCRYPTED" --color WHITE
+                else
+                    # /boot is generally not be encrypted.  We should test to see
+                    # that it is on its own partition.  Also might test if
+                    # it is mounted read-only?
+                    LogText " - ${DEVICE} is mounted on ${MOUNTPOINT}, cannot be encrypted with DM-Crypt."
+                    Display --indent 6 --text "- Checking /boot on ${DEVICE}" --result "NOT ENCRYPTED" --color WHITE
+                fi
+            fi
+            # add physical device to the tested list.
+            TESTED_LIST="${TESTED_LIST},${PDEV}"
+        done
+      else
+        Display --indent 6 --text "- No file system mount points found" --result ERROR --color RED
+    fi
+fi
+
+# Test        : DEB-0520
+# Description : Check if user home directories are encrypted with ecryptfs
+# Notes       : Ecryptfs is useful on multi-user systems.  Can be configured
+#               so that files in the users home directories are only
+#               decrypted while the user is logged in.
+#
+#               This function adds hardening points according to the
+#               following criteria:
+#                  +1 Ecryptfs Installed
+#                  +1 for each user account that can be configured to use it.
+if [ ! "${ECRYPTFSDBINARY}" = "" ]; then PREQS_MET="YES"; else PREQS_MET="NO"; fi
+Register --test-no "DEB-0520" --os Linux --preqs-met ${PREQS_MET} --weight L --network NO --description "Checking for Ecryptfs"
+if [ ${SKIPTEST} -eq 0 -a ! "${ECRYPTFSDBINARY}" = "" ]; then
+    Display --indent 4 --text "- Ecryptfs" --result INSTALLED --color GREEN
+    LogText "Ecryptfs installed."
+    AddHP 1 1
+    LogText "Test: If user home directories are configured to use Ecryptfs"
+    USERLIST=`awk -F: '($3 > 500) && ($3 != 65534) { print $1","$6 }' /etc/passwd`
+    for U in ${USERLIST}; do
+    ECRYPTFSHOME=1
+    USER=`echo ${U} | sed -e 's/,.*//'`
+    HOMEDIR=`echo ${U} | sed -e 's/^[^,]*,//'`
+    LogText "USER: ${USER}"
+    LogText "HOME DIR: ${HOMEDIR}"
+    if [ -d /home/.ecryptfs/${USER} -a -f /home/.ecryptfs/${USER}/.ecryptfs/auto-mount -a -f /home/.ecryptfs/${USER}/.ecryptfs/Private.mnt ]; then
+        PRIVDIR=`cat /home/.ecryptfs/${USER}/.ecryptfs/Private.mnt`
+        LogText "PRIVATE DIR: ${PRIVDIR}"
+        if [ "${HOMEDIR}" = ${PRIVDIR} ]; then
+        # Ecryptfs installed and configured to encrypt users
+        # entire ${HOME} directory.
+        LogText "Result: Home directory for ${USER} configured to use Ecryptfs"
+        Display --indent 6 --text "- Home for ${USER}" --result YES --color GREEN
+        AddHP 1 1
+        ECRYPTFSHOME=0
+        fi
+    fi
+    if [ ${ECRYPTFSHOME} -eq 1 ]; then
+        # Ecryptfs Private directory configured but not for
+        # users ${HOME} directory -OR- Ecryptfs has not been setup
+        # for user.
+        LogText "Result: Ecryptfs installed but not configured for ${USER}'s home directory"
+        Display --indent 6 --text "- Home for ${USER}" --result NO --color RED
+        AddHP 0 1
+        # Unsure if ecryptfs-migrate-home is part of all Ecryptfs installations
+        # on all Linux distributions.
+        if [ ! "${ECRYPTFSMIGRATEBINARY}" = "" ]; then
+        ReportSuggestion ${TEST_NO} "As root run 'ecryptfs-migrate-home --user ${USER}' to configure Ecryptfs for user's home directory"
+        else
+        ReportSuggestion ${TEST_NO} "Configure Ecryptfs for ${USER}'s home directory"
+        fi
+    fi
+    done
+fi
+
+#################################################################################
+# Software
+
+Display --indent 2 --text "- Software:"
+LogText "Status: Starting Software checks..."
+
+# Test        : DEB-0810
+# Description : Checking if apt-listbugs is installed and enabled.
+Register --test-no "DEB-0810" --weight L --network NO --description "Checking for apt-listbugs"
+if [ ${SKIPTEST} -eq 0 ]; then
+    if [ ! "${APTLISTBUGSBINARY}" = "" ]; then
+        LogText " - apt-listbugs is installed."
+        AddHP 1 1
+        FIND=`find /etc/apt/apt.conf.d -name *listbugs`
+        if [ ! ${FIND} = "" ]; then
+            LogText " - Apt configured to use apt-listbugs"
+            Display --indent 4 --text "- apt-listbugs" --result "Installed and enabled for apt" --color GREEN
+            AddHP 1 1
+        else
+            LogText " - Apt is not configured to use apt-listbugs"
+            Display --indent 4 --text "- apt-listbugs" --result "Installed but not enabled for apt" --color YELLOW
+            AddHP 0 1
+            ReportSuggestion ${TEST_NO} "Reinstall apt-listbugs to enabled default task in /etc/apt/apt.comf.d"
+        fi
+    else
+        LogText " - apt-listbugs is not installed."
+        Display --indent 4 --text "- apt-listbugs" --result "Not Installed" --color RED
+        AddHP 0 2
+        ReportSuggestion ${TEST_NO} "Install apt-listbugs to display a list of critical bugs prior to each APT installation."
+    fi
+fi
+
+# Test        : DEB-0811
+# Description : Checking if apt-listchanges is installed and enabled.
+Register --test-no "DEB-0811" --weight L --network NO --description "Checking for apt-listchanges"
+if [ ${SKIPTEST} -eq 0 ]; then
+    if [ ! "${APTLISTCHANGESBINARY}" = "" ]; then
+        LogText " - apt-listchanges is installed."
+        AddHP 1 1
+        FIND=`find /etc/apt/apt.conf.d -name *listchanges`
+        if [ ! ${FIND} = "" ]; then
+            LogText " - Apt configured to use apt-listchanges"
+            Display --indent 4 --text "- apt-listchanges" --result "Installed and enabled for apt" --color GREEN
+            AddHP 1 1
+        else
+            LogText " - Apt is not configured to use apt-listchanges"
+            Display --indent 4 --text "- apt-listchanges" --result "Installed but not enabled for apt" --color YELLOW
+            AddHP 0 1
+            ReportSuggestion ${TEST_NO} "Reinstall apt-listchanges to enabled default task in /etc/apt/apt.comf.d"
+        fi
+    else
+        LogText " - apt-listchanges is not installed."
+        Display --indent 4 --text "- apt-listchanges" --result "Not Installed" --color RED
+        AddHP 0 2
+        ReportSuggestion ${TEST_NO} "Install apt-listchanges to display any significant changes prior to any upgrade via APT."
+    fi
+fi
+
+# Test        : DEB-0831
+# Description : Checking if needrestart is installed.
+Register --test-no DEB-0831 --weight L --network NO --description "Verifying that needrestart is installed."
+if [ ${SKIPTEST} -eq 0 ]; then
+    if [ ! "${NEEDRESTARTBINARY}" = "" ]; then
+        LogText " - needrestart is installed."
+        Display --indent 4 --text "- needrestart" --result "Installed" --color GREEN
+        AddHP 1 1
+    else
+        LogText " - needrestart is not installed."
+        Display --indent 4 --text "- needrestart" --result "Not Installed" --color RED
+        ReportSuggestion ${TEST_NO} "Install needrestart, alternatively to debian-goodies, so that you can run needrestart after upgrades to determine which daemons are using old versions of libraries and need restarting."
+        AddHP 0 1
+    fi
+fi
+
+# Test        : DEB-0880
+# Description : Checking if fail2ban-server is installed.
+Register --test-no "DEB-0880" --weight L --network NO --description "Checking for fail2ban"
+if [ ${SKIPTEST} -eq 0 ]; then
+    if [ ! "${FAIL2BANBINARY}" = "" ]; then
+        LogText " - fail2ban is installed."
+        AddHP 1 1
+        LOCAL=`find /etc/fail2ban/ -name jail.local | wc -l`
+        # Default installation of fail2ban includes a default configuration in
+        # /etc/fail2ban/jail.conf.  However this configuration can be
+        # overwritten by any updates to the fail2ban package.  To prevent this,
+        # the configuration file should be copied to /etc/fail2ban/jail.local.
+        if [ ${LOCAL} -gt 0 ]; then
+            LogText " - fail2ban local custom configuration enabled."
+            Display --indent 4 --text "- fail2ban" --result "Installed with jail.local" --color GREEN
+            AddHP 1 1
+        else
+            LogText " - fail2ban configuration has not been localized."
+            Display --indent 4 --text "- fail2ban" --result "Installed with jail.conf" --color YELLOW
+            AddHP 0 1
+            ReportSuggestion ${TEST_NO} "Copy /etc/fail2ban/jail.conf to jail.local to prevent it being changed by updates."
+        fi
+    else
+        LogText " - fail2ban is not installed."
+        Display --indent 4 --text "- fail2ban" --result "Not Installed" --color RED
+        AddHP 0 2
+        ReportSuggestion ${TEST_NO} "Install fail2ban to automatically ban hosts that commit multiple authentication errors."
+    fi
+fi
+
+
+
+LogTextBreak
+
+# Wait for keypress (unless --quick is being used)
+WaitForKeyPress
+
+#EOF

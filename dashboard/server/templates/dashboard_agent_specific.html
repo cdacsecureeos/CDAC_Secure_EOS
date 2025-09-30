@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+
+{% block title %}Agent: {{ agent.hostname }}{% endblock %}
+
+{% block content %}
+<div class="dashboard-container" data-agent-uuid="{{ agent.agent_uuid }}">
+    <header class="dashboard-header mb-5 text-center">
+        <a href="/dashboard/agents" class="btn btn-sm btn-outline-secondary mb-3">
+            <i class="fas fa-arrow-left me-2"></i>Back to All Agents
+        </a>
+        <h1 class="gradient-title">Dashboard for: {{ agent.hostname }}</h1>
+        <p class="lead text-muted">A real-time overview of this agent's operational and security status.</p>
+        <p class="text-muted small" id="last-update-text">Connecting to agent...</p>
+    </header>
+
+    <div class="row g-4 justify-content-center">
+        <div class="col-md-6 col-lg-4">
+            <a href="/dashboard/cpu?agent_uuid={{ agent.agent_uuid }}#tabProcesses" class="text-decoration-none">
+                <div class="themed-card dashboard-tile">
+                    <div class="tile-icon icon-cpu"><i class="fas fa-microchip"></i></div>
+                    <h5 class="tile-title">CPU & Processes</h5>
+                    <p class="tile-desc">Top Process: <strong class="data-placeholder" id="top-process">Loading...</strong></p>
+                </div>
+            </a>
+        </div>
+        <div class="col-md-6 col-lg-4">
+            <a href="/dashboard/sessions?agent_uuid={{ agent.agent_uuid }}" class="text-decoration-none">
+                <div class="themed-card dashboard-tile">
+                    <div class="tile-icon icon-sessions"><i class="fas fa-users"></i></div>
+                    <h5 class="tile-title">Login Sessions</h5>
+                    <p class="tile-desc"><strong class="data-placeholder" id="active-sessions">--</strong> Active Session(s)</p>
+                </div>
+            </a>
+        </div>
+        <div class="col-md-6 col-lg-4">
+            <a href="/dashboard/command_history?agent_uuid={{ agent.agent_uuid }}" class="text-decoration-none">
+                <div class="themed-card dashboard-tile">
+                    <div class="tile-icon icon-commands"><i class="fas fa-terminal"></i></div>
+                    <h5 class="tile-title">Command History</h5>
+                    <p class="tile-desc">Last Executed: <strong class="data-placeholder" id="last-command">Loading...</strong></p>
+                </div>
+            </a>
+        </div>
+         <div class="col-md-6 col-lg-4">
+            <a href="/dashboard/file_integrity?agent_uuid={{ agent.agent_uuid }}" class="text-decoration-none">
+                <div class="themed-card dashboard-tile">
+                    <div class="tile-icon icon-files"><i class="fas fa-shield-halved"></i></div>
+                    <h5 class="tile-title">File Integrity</h5>
+                    <p class="tile-desc"><strong class="data-placeholder" id="changed-files">--</strong> Files Changed Today</p>
+                </div>
+            </a>
+        </div>
+         <div class="col-md-6 col-lg-4">
+            <a href="/dashboard/security?agent_uuid={{ agent.agent_uuid }}" class="text-decoration-none">
+                <div class="themed-card dashboard-tile">
+                    <div class="tile-icon icon-security"><i class="fas fa-user-secret"></i></div>
+                    <h5 class="tile-title">Security Events</h5>
+                     <p class="tile-desc"><strong class="data-placeholder" id="failed-logins">--</strong> Failed Logins Today</p>
+                </div>
+            </a>
+        </div>
+        <div class="col-md-6 col-lg-4">
+            <a href="/dashboard/cpu?agent_uuid={{ agent.agent_uuid }}#tabAlerts" class="text-decoration-none">
+                <div class="themed-card dashboard-tile">
+                    <div class="tile-icon icon-audit"><i class="fas fa-bell"></i></div>
+                    <h5 class="tile-title">System Alerts</h5>
+                    <p class="tile-desc"><strong class="data-placeholder" id="audit-events">--</strong> Active Alerts</p>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+    {% endblock %}

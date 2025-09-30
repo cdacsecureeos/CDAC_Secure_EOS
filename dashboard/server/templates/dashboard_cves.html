@@ -1,0 +1,76 @@
+<!-- {% extends "base.html" %}
+
+{% block title %}🔍 CVE Scan Results{% endblock %}
+{% block heading %}🛡️ CVE Vulnerability Reports{% endblock %}
+
+{% block content %}
+<div class="card shadow-sm p-3 mb-4">
+  <div class="d-flex justify-content-between">
+    <label for="refreshInterval">Auto Refresh</label>
+    <select id="refreshInterval" class="form-select w-auto">
+      <option value="0">🔁 Off</option>
+      <option value="30000">🔁 Every 30s</option>
+    </select>
+    <a href="/" class="btn btn-secondary">⬅ Dashboard</a>
+  </div>
+</div>
+
+<div class="card shadow-sm p-3">
+  <table id="cveTable" class="table table-striped table-bordered w-100">
+    <thead class="table-dark text-center">
+      <tr>
+        <th>Host</th>
+        <th>CVE ID</th>
+        <th>Severity</th>
+        <th>Description</th>
+        <th>Package</th>
+        <th>Fixed Version</th>
+        <th>Current Version</th>
+        <th>Reported</th>
+      </tr>
+    </thead>
+  </table>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+let cveTable;
+let interval;
+
+function loadCVEs() {
+  if (cveTable) {
+    cveTable.ajax.reload(null, false);
+  } else {
+    cveTable = $('#cveTable').DataTable({
+      ajax: "/api/v1/dashboard/cves",
+      columns: [
+        { data: "host" },
+        { data: "cve_id" },
+        { data: "severity" },
+        { data: "description" },
+        { data: "package" },
+        { data: "fixed_version" },
+        { data: "current_version" },
+        { data: "received_at" }
+      ],
+      order: [[7, 'desc']],
+      scrollX: true,
+      pageLength: 10,
+      responsive: true
+    });
+  }
+}
+
+$(document).ready(function() {
+  loadCVEs();
+  $('#refreshInterval').on('change', function () {
+    clearInterval(interval);
+    const val = parseInt(this.value);
+    if (val > 0) {
+      interval = setInterval(loadCVEs, val);
+    }
+  });
+});
+</script>
+{% endblock %} -->

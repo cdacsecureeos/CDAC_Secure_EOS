@@ -1,0 +1,19 @@
+@@define BORGCACHE root/\\.cache/borg
+@@define BORGCONFIG root/\\.config/borg
+@@define BORGBACKHOST insert-your-backup-host-here
+@@define BORGBACKPATH insert-your-path-to-backup-here
+/@@{BORGCACHE}(/(keys|security))?$ d VarDir
+!/@@{BORGCACHE}/[[:xdigit:]]{64}$ d
+!/@@{BORGCACHE}/[[:xdigit:]]{64}/(README|chunks|config|files|lock\\.roster|pre12-meta)$ f
+!/@@{BORGCACHE}/[[:xdigit:]]{64}/(chunks\\.archive\\.d|lock\\.exclusive|txn\\.active)$ d
+!/@@{BORGCACHE}/[[:xdigit:]]{64}/chunks\\.archive\\.d/[[:xdigit:]]{64}(\\.compact(\\.integrity)?)?$ f
+!/@@{BORGCACHE}/[[:xdigit:]]{64}/lock\\.exclusive/@@{HOSTNAME}\\.[[:digit:]]+\\-0$ f
+!/@@{BORGCACHE}/[[:xdigit:]]{64}/txn.active/(chunks|config|files)$ f
+@@if defined BORGBACKHOST
+@@if defined BORGBACKPATH
+!/@@{BORGCACHE}/keys/@@{BORGBACKHOST}__@@{BORGBACKPATH}_@@{HOSTNAME}\\.[[:digit:]]$ f
+@@endif
+@@endif
+!/@@{BORGCONFIG}/security/[[:xdigit:]]{64}$ d
+!/@@{BORGCONFIG}/security/[[:xdigit:]]{64}/(key-type|location|manifest-timestamp|nonce|tam_required)$ f
+

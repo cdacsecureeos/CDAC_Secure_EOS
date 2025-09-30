@@ -1,0 +1,166 @@
+{% extends "base.html" %}
+
+{% block title %}Agent Management{% endblock %}
+
+{% block content %}
+<div class="container-fluid p-4">
+    <header class="d-flex justify-content-between align-items-center mb-4">
+        <h1 class="h2 text-nowrap">
+            <i class="fas fa-cubes me-2"></i>Endpoints
+        </h1>
+        <div class="d-flex align-items-center">
+            <span class="badge rounded-pill bg-warning text-dark">a</span>
+        </div>
+    </header>
+
+    <div class="row g-4 mb-4">
+        <div class="col">
+            <div class="summary-card active-filter" data-status-filter="All" title="Show All Agents"><div class="card-icon-wrapper icon-all"><i class="fas fa-globe-americas"></i></div><div class="text-start"><h6 class="text-muted">Total Agents</h6><p class="display-5 fw-bold text-primary" id="total-agents-count">0</p></div></div>
+        </div>
+        <div class="col">
+            <div class="summary-card" data-status-filter="Active" title="Show Active Agents"><div class="card-icon-wrapper icon-active"><i class="fas fa-check-circle"></i></div><div class="text-start"><h6 class="text-muted">Active</h6><p class="display-5 fw-bold text-success" id="active-count">0</p></div></div>
+        </div>
+        <div class="col">
+            <div class="summary-card" data-status-filter="Disconnected" title="Show Disconnected Agents"><div class="card-icon-wrapper icon-disconnected"><i class="fas fa-exclamation-circle"></i></div><div class="text-start"><h6 class="text-muted">Disconnected</h6><p class="display-5 fw-bold text-danger" id="disconnected-count">0</p></div></div>
+        </div>
+        <div class="col">
+            <div class="summary-card" data-status-filter="Never connected" title="Show Never Connected Agents"><div class="card-icon-wrapper icon-never"><i class="fas fa-question-circle"></i></div><div class="text-start"><h6 class="text-muted">Never Connected</h6><p class="display-5 fw-bold" id="never-connected-count">0</p></div></div>
+        </div>
+        <div class="col">
+             <div class="summary-card" data-status-filter="Revoked" title="Show Revoked Agents"><div class="card-icon-wrapper icon-revoked"><i class="fas fa-ban"></i></div><div class="text-start"><h6 class="text-muted">Revoked</h6><p class="display-5 fw-bold text-secondary" id="revoked-count">0</p></div></div>
+        </div>
+    </div>
+
+    <div class="themed-card">
+        <div class="card-body">
+            <div class="d-flex justify-content-between align-items-center mb-3 flex-wrap"><h4 class="card-title mb-0">Agent List</h4><div class="d-flex align-items-center gap-2 mt-2 mt-md-0"><input type="search" id="agentSearch" class="form-control form-control-sm" placeholder="Search by name or IP..."><button class="btn btn-primary btn-sm text-nowrap" data-bs-toggle="modal" data-bs-target="#deployAgentModal"><i class="fas fa-plus"></i> Deploy new agent</button><button class="btn btn-outline-secondary btn-sm" id="refresh-agents-btn" title="Refresh Data"><i class="fas fa-sync-alt"></i></button></div></div>
+            <div class="table-responsive">
+                <table class="table table-hover align-middle">
+                    <thead class="table-light">
+                        <tr>
+                            <th style="width: 5%;">#</th>
+                            <th>Name</th>
+                            <th>IP address</th>
+                            <th>Operating System</th>
+                            <th>Last Seen</th>
+                            <th>Status</th>
+                            <th class="text-end">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="agents-table-body"></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="deployAgentModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered"><div class="modal-content themed-card"><div class="modal-header border-0"><h5 class="modal-title">Deploy New Agent</h5><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></div><div class="modal-body"><p class="text-muted">...</p><ul class="nav nav-tabs" id="deployOsTabs" role="tablist">...</ul><div class="tab-content p-3 border border-top-0 rounded-bottom" id="deployOsTabsContent">...</div></div></div></div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<style>
+    /* Your existing beautiful styles - UNCHANGED */
+    .themed-card, .summary-card { background-color: var(--card-bg-color); border: 1px solid var(--border-color); border-radius: 0.75rem; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+    .summary-card { display: flex; align-items: center; padding: 1.25rem; cursor: pointer; transition: all 0.2s ease-in-out; opacity: 0; animation: fadeIn 0.5s ease-out forwards; }
+    .summary-card:hover { transform: translateY(-5px); box-shadow: 0 8px 15px rgba(0,0,0,0.1); border-color: var(--primary-color); }
+    .summary-card.active-filter { border-color: var(--primary-color); border-width: 2px; }
+    .card-icon-wrapper { font-size: 1.75rem; width: 60px; height: 60px; border-radius: 50%; display: grid; place-items: center; margin-right: 1rem; }
+    .icon-all { background-color: rgba(13, 110, 253, 0.1); color: var(--primary-color); }
+    .icon-active { background-color: rgba(25, 135, 84, 0.1); color: #198754; }
+    .icon-disconnected { background-color: rgba(220, 53, 69, 0.1); color: #dc3545; }
+    .icon-never { background-color: rgba(108, 117, 125, 0.1); color: #6c757d; }
+    .icon-revoked { background-color: rgba(108, 117, 125, 0.1); color: #6c757d; }
+    .status-dot { height: 10px; width: 10px; border-radius: 50%; display: inline-block; margin-right: 8px; }
+    #agents-table-body tr { opacity: 0; animation: fadeInTableRow 0.4s ease-out forwards; }
+    pre { background-color: #e9ecef; padding: 1rem; border-radius: 0.25rem; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes fadeInTableRow { from { opacity: 0; } to { opacity: 1; } }
+
+    /* ✅ --- START: FIXED & IMPROVED DARK MODE STYLES --- ✅ */
+    .dark-mode .themed-card,
+    .dark-mode .summary-card,
+    .dark-mode .modal-content {
+        color: var(--text-color);
+        background-color: var(--card-bg-color);
+        border-color: var(--border-color);
+    }
+
+    /* General table styling for dark mode */
+    .dark-mode .table {
+        --bs-table-color: var(--text-color);
+        --bs-table-bg: transparent; /* Inherit background from parent card */
+        --bs-table-border-color: var(--border-color);
+        --bs-table-striped-color: var(--text-color);
+        --bs-table-striped-bg: rgba(255, 255, 255, 0.05);
+        --bs-table-active-color: var(--text-color);
+        --bs-table-active-bg: rgba(255, 255, 255, 0.1);
+        --bs-table-hover-color: var(--text-color);
+        --bs-table-hover-bg: rgba(255, 255, 255, 0.075);
+    }
+
+    /* FIX: Specifically target the .table-light class on thead in dark mode */
+    .dark-mode .table .table-light {
+        --bs-table-color: #ced4da;
+        --bs-table-bg: #343a40; /* A solid dark color for the header */
+        border-color: #454d55;
+    }
+
+    /* FIX: Style for form inputs like the search bar */
+    .dark-mode .form-control {
+        background-color: #2b3035; /* Dark input background */
+        color: var(--text-color);
+        border-color: var(--border-color);
+    }
+
+    .dark-mode .form-control:focus {
+        background-color: #2b3035;
+        color: var(--text-color);
+        border-color: var(--primary-color);
+        box-shadow: 0 0 0 0.25rem rgba(var(--primary-rgb), 0.25);
+    }
+
+    .dark-mode .form-control::placeholder {
+        color: var(--text-muted-color);
+    }
+
+    /* Other dark mode adjustments */
+    .dark-mode .btn-close { filter: invert(1) grayscale(100%) brightness(200%); }
+    .dark-mode .nav-tabs .nav-link { color: var(--text-muted-color); border-bottom-color: transparent; }
+    .dark-mode .nav-tabs .nav-link.active { color: var(--primary-color); border-bottom-color: var(--primary-color); background-color: transparent;}
+    .dark-mode .border { border-color: var(--border-color) !important; }
+    .dark-mode pre { background-color: #343a40 !important; color: #e0e0e0; }
+    /* ✅ ---- END: FIXED & IMPROVED DARK MODE STYLES ---- ✅ */
+</style>
+
+<script>
+// Your original, unchanged, and fully functional JavaScript.
+document.addEventListener('DOMContentLoaded', function() {
+    let allAgents = [], currentStatusFilter = 'All';
+    const statusMapping = { 'Connected': { color: '#28a745', ui: 'Active' }, 'Active': { color: '#28a745', ui: 'Active' }, 'Disconnected': { color: '#dc3545', ui: 'Disconnected' }, 'Revoked': { color: '#6c757d', ui: 'Revoked' }, 'Never connected': { color: '#888', ui: 'Never connected' } };
+    const fetchAgents = async () => { try { const response = await fetch('/api/v1/agents'); if (!response.ok) throw new Error(`API Error: ${response.status}`); allAgents = await response.json(); updateDashboard(); } catch (error) { console.error("Failed to fetch agents:", error); document.getElementById('agents-table-body').innerHTML = `<tr><td colspan="7" class="text-center text-danger">Could not load agent data.</td></tr>`; } };
+    function updateDashboard() { const statusCounts = { 'Active': 0, 'Disconnected': 0, 'Never connected': 0, 'Revoked': 0 }; allAgents.forEach(agent => { const uiStatus = statusMapping[agent.status]?.ui || 'Unknown'; if (uiStatus in statusCounts) statusCounts[uiStatus]++; }); document.getElementById('total-agents-count').textContent = allAgents.length; document.getElementById('active-count').textContent = statusCounts['Active']; document.getElementById('disconnected-count').textContent = statusCounts['Disconnected']; document.getElementById('never-connected-count').textContent = statusCounts['Never connected']; document.getElementById('revoked-count').textContent = statusCounts['Revoked']; document.querySelectorAll('.summary-card').forEach((card, index) => { card.style.animationDelay = `${index * 100}ms`; }); populateAgentsTable(); }
+    function timeAgo(dateString) { if (!dateString) return 'Never'; const seconds = Math.round((new Date() - new Date(dateString)) / 1000); if (seconds < 60) return `${seconds}s ago`; const minutes = Math.round(seconds / 60); if (minutes < 60) return `${minutes}m ago`; const hours = Math.round(minutes / 60); if (hours < 24) return `${hours}h ago`; return `${Math.round(hours / 24)}d ago`; }
+    function populateAgentsTable() {
+        const tableBody = document.getElementById('agents-table-body');
+        const query = document.getElementById('agentSearch').value.toLowerCase();
+        let filteredAgents = allAgents;
+        if (currentStatusFilter !== 'All') { filteredAgents = allAgents.filter(agent => (statusMapping[agent.status]?.ui || 'Unknown') === currentStatusFilter); }
+        if (query) { filteredAgents = filteredAgents.filter(a => (a.hostname || '').toLowerCase().includes(query) || (a.ip_address || '').toLowerCase().includes(query)); }
+        if (filteredAgents.length === 0) { tableBody.innerHTML = `<tr><td colspan="7" class="text-center">No agents match the current filter.</td></tr>`; return; }
+        tableBody.innerHTML = filteredAgents.map((agent, index) => {
+            const osName = agent.os_name || 'Unknown';
+            const osIcon = osName.toLowerCase().includes('windows') ? 'fa-windows' : osName.toLowerCase().includes('linux') ? 'fa-linux' : 'fa-apple';
+            const statusInfo = statusMapping[agent.status] || { color: '#6c757d', ui: 'Unknown' };
+            const agentDashboardUrl = `/dashboard/agent/${agent.agent_uuid}`;
+            return `<tr style="animation-delay: ${index * 30}ms;"><td>${index + 1}</td><td><a href="${agentDashboardUrl}" class="text-decoration-none fw-bold">${agent.hostname}</a></td><td>${agent.ip_address}</td><td><i class="fab ${osIcon} me-2" title="${osName}"></i>${osName}</td><td>${timeAgo(agent.last_seen)}</td><td><span class="status-dot" style="background-color: ${statusInfo.color};"></span>${statusInfo.ui}</td><td class="text-end"><button class="btn btn-sm btn-outline-secondary" title="View Details"><i class="fas fa-eye"></i></button></td></tr>`;
+        }).join('');
+    }
+    document.querySelectorAll('.summary-card').forEach(card => card.addEventListener('click', function() { currentStatusFilter = this.dataset.statusFilter; document.querySelectorAll('.summary-card').forEach(c => c.classList.remove('active-filter')); this.classList.add('active-filter'); populateAgentsTable(); }));
+    document.getElementById('agentSearch').addEventListener('input', populateAgentsTable);
+    document.getElementById('refresh-agents-btn').addEventListener('click', fetchAgents);
+    fetchAgents(); setInterval(fetchAgents, 30000);
+});
+</script>
+{% endblock %}

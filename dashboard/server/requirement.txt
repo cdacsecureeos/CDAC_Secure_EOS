@@ -1,0 +1,11 @@
+fastapi
+uvicorn
+jinja2
+psycopg[binary]
+python-dotenv
+python-jose[cryptography]
+
+scikit-learn pandas
+pip install "python-socketio[asgi]"
+pip install dash dash-bootstrap-components requests pandas psutil
+

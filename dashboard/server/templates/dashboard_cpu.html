@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live System Dashboard</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto+Mono&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css">
+
+    <style>
+        :root {
+            --bg-color: #f4f7fc; --card-bg-color: #ffffff; --text-color: #2c3e50;
+            --text-muted-color: #6c757d; --border-color: #dee2e6; --primary-color: #0d6efd;
+            --primary-hover-color: #0a58ca; --info-color: #0dcaf0; --warning-color: #ffc107;
+            --danger-color: #dc3545; --success-color: #198754; --card-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            --table-striped-bg: #f8f9fa; --table-hover-bg: #e9ecef;
+        }
+        [data-theme="dark"] {
+            --bg-color: #121212; --card-bg-color: #1e1e1e; --text-color: #e0e0e0;
+            --text-muted-color: #a0a0b0; --border-color: #3a3f4b; --primary-color: #4dabf7;
+            --primary-hover-color: #74c0fc; --info-color: #4de0e0; --warning-color: #ffd43b;
+            --danger-color: #ff6b6b; --success-color: #4ade80; --card-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+            --table-striped-bg: #2a2a2a; --table-hover-bg: #343a40;
+        }
+        body { font-family: 'Poppins', sans-serif; background-color: var(--bg-color); color: var(--text-color); }
+        .card { background-color: var(--card-bg-color); border: 1px solid var(--border-color); border-radius: 12px; box-shadow: var(--card-shadow); }
+        .nav-tabs { border-bottom-color: var(--border-color); }
+        .nav-tabs .nav-link { border: none; color: var(--text-muted-color); font-weight: 500; border-bottom: 3px solid transparent; }
+        .nav-tabs .nav-link.active { color: var(--primary-color); background-color: transparent; border-bottom: 3px solid var(--primary-color); }
+        .tab-content { background-color: transparent; padding: 0; border: none; }
+        .tab-pane .card { border-radius: 0 0 12px 12px; border-top: none; }
+        .table { --bs-table-color: var(--text-color); --bs-table-bg: var(--card-bg-color); --bs-table-border-color: var(--border-color); --bs-table-striped-bg: var(--table-striped-bg); border-collapse: separate; border-spacing: 0; }
+        .table th, .table td { padding: 0.9rem 1rem; vertical-align: middle; }
+        .table thead th { border-bottom-width: 2px; }
+        .table tbody tr { transition: background-color 0.2s ease-in-out, border-left-color 0.2s ease-in-out; border-left: 3px solid transparent; }
+        .table tbody tr:hover { background-color: var(--table-hover-bg); border-left-color: var(--primary-color); }
+        .loading-placeholder { min-height: 400px; display: flex; align-items: center; justify-content: center; font-style: italic; color: var(--text-muted-color); }
+        .command-cell { font-family: 'Roboto Mono', monospace; white-space: pre-wrap; word-break: break-all; font-size: 0.9em; }
+    </style>
+</head>
+<body>
+    <div class="container-fluid p-4">
+        <header class="d-flex justify-content-between align-items-center mb-4">
+            <h1 class="h2"><i class="fas fa-server me-2 text-primary"></i>Live System Dashboard</h1>
+            <div class="d-flex align-items-center">
+                <a href="/" class="btn btn-sm btn-outline-secondary me-3">⬅ Back to Dashboard</a>
+                <button id="theme-toggle" class="btn btn-sm btn-outline-secondary me-3" title="Toggle Theme"><i class="fas fa-moon"></i></button>
+                <div class="form-check form-switch me-3 d-none" id="tree-view-controls">
+                    <input class="form-check-input" type="checkbox" role="switch" id="toggle-tree-view" checked>
+                    <label class="form-check-label" for="toggle-tree-view">Tree View</label>
+                </div>
+                <label for="refreshInterval" class="me-2 fw-bold small">Refresh:</label>
+                <select id="refreshInterval" class="form-select form-select-sm" style="width: auto;">
+                    <option value="0">Off</option><option value="10000" selected>10s</option><option value="30000">30s</option>
+                </select>
+            </div>
+        </header>
+
+        <ul class="nav nav-tabs" id="dashboardTabs" role="tablist">
+            <li class="nav-item" role="presentation"><button class="nav-link active" data-bs-toggle="tab" data-bs-target="#tabGraphs" type="button"><i class="fas fa-chart-area me-1"></i> Graphs</button></li>
+            <li class="nav-item" role="presentation"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#tabProcesses" type="button"><i class="fas fa-sitemap me-1"></i> Processes</button></li>
+            <li class="nav-item" role="presentation"><button class="nav-link position-relative" data-bs-toggle="tab" data-bs-target="#tabAlerts" type="button"><i class="fas fa-bell me-1"></i> Alerts<span id="alert-count-badge" class="badge rounded-pill bg-danger position-absolute top-0 start-100 translate-middle d-none">0</span></button></li>
+        </ul>
+
+        <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade show active" id="tabGraphs" role="tabpanel"><div class="card"><div class="card-body"><div class="row text-center mb-4"><div class="col-md-4 mb-3 mb-md-0"><h5 class="text-muted">CPU Usage</h5><div id="cpuSummary" class="display-6 fw-bold text-primary">-</div><small id="cpuBreakdown" class="text-muted"></small></div><div class="col-md-4 mb-3 mb-md-0"><h5 class="text-muted">Memory</h5><div id="memSummary" class="display-6 fw-bold text-info">-</div><small id="memBreakdown" class="text-muted"></small></div><div class="col-md-4"><h5 class="text-muted">Load Average</h5><div id="loadSummary" class="display-6 fw-bold text-warning">-</div><small class="text-muted">1m, 5m, 15m</small></div></div><div class="row"><div class="col-lg-4 d-flex align-items-center justify-content-center"><div id="cpu-gauge-chart" style="min-height: 250px; width: 100%"></div></div><div class="col-lg-4 d-flex align-items-center justify-content-center"><div id="mem-donut-chart" style="min-height: 250px; width: 100%"></div></div><div class="col-lg-4 d-flex align-items-center justify-content-center"><div id="cpu-history-chart" style="min-height: 250px; width: 100%"></div></div></div></div></div></div>
+            <div class="tab-pane fade" id="tabProcesses" role="tabpanel"><div class="card"><div class="card-body"><div id="process-table-container"><div class="loading-placeholder"><i class="fas fa-spinner fa-spin me-2"></i>Loading Process Data...</div></div></div></div></div>
+            <div class="tab-pane fade" id="tabAlerts" role="tabpanel"><div class="card"><div class="card-body"><div id="alert-table-container"><div class="loading-placeholder"><i class="fas fa-spinner fa-spin me-2"></i>Loading Alert Data...</div></div></div></div></div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
+
+    <script>
+    $(document).ready(function() {
+        // --- GLOBAL STATE ---
+        let cpuTable, alertsTable, interval;
+        let isCpuTableInitialized = false, isAlertsTableInitialized = false;
+        let isTreeView = true;
+        let isUpdating = false;
+        let allCharts = [];
+
+        const themeToggle = $('#theme-toggle'); 
+        function applyTheme(theme) { 
+            $('html').attr('data-theme', theme); 
+            localStorage.setItem('dashboard_theme', theme); 
+            themeToggle.html(`<i class="fas ${theme === 'dark' ? 'fa-sun' : 'fa-moon'}"></i>`); 
+            const chartTextColor = getComputedStyle(document.documentElement).getPropertyValue('--text-color').trim(); 
+            const chartMutedColor = getComputedStyle(document.documentElement).getPropertyValue('--text-muted-color').trim(); 
+            allCharts.forEach(chart => chart.updateOptions({ 
+                chart: { foreColor: chartTextColor }, 
+                theme: { mode: theme }, 
+                title: { style: { color: chartTextColor } }, 
+                legend: { labels: { colors: chartMutedColor } }, 
+                xaxis: { labels: { style: { colors: chartMutedColor } } }, 
+                yaxis: { labels: { style: { colors: chartMutedColor } } } 
+            })); 
+        }
+        themeToggle.on('click', () => applyTheme($('html').attr('data-theme') === 'dark' ? 'light' : 'dark'));
+        const chartOptions = { chart: { background: 'transparent', toolbar: { show: false } }, stroke: { width: 2, curve: 'smooth' }, markers: { size: 0 }, grid: { show: false } };
+        const cpuGaugeChart = new ApexCharts(document.querySelector("#cpu-gauge-chart"), { ...chartOptions, chart: { ...chartOptions.chart, type: 'radialBar', height: 280 }, series: [0], colors: ['var(--primary-color)'], plotOptions: { radialBar: { hollow: { size: '70%' }, dataLabels: { name: { offsetY: -10, show: true }, value: { offsetY: 10, fontSize: '36px', show: true } } } }, labels: ['Total CPU %'], title: { text: 'Current CPU Load', align: 'center'} });
+        const memDonutChart = new ApexCharts(document.querySelector("#mem-donut-chart"), { ...chartOptions, chart: { ...chartOptions.chart, type: 'donut', height: 280 }, series: [1, 1, 1], labels: ['App Used', 'Buff/Cache', 'Free'], colors: ['var(--info-color)', 'var(--warning-color)', 'var(--success-color)'], title: { text: 'Memory Distribution', align: 'center' } });
+        const cpuHistoryChart = new ApexCharts(document.querySelector("#cpu-history-chart"), { ...chartOptions, chart: { ...chartOptions.chart, type: 'area', height: 250, animations: { enabled: true, easing: 'linear', dynamicAnimation: { speed: 1000 } } }, series: [{ name: "CPU %", data: [] }], colors: ['var(--primary-color)'], tooltip: { theme: 'dark' }, xaxis: { type: 'datetime', range: 60000 }, yaxis: { min: 0, max: 100 }, title: { text: 'CPU Usage History', align: 'center' } });
+        allCharts.push(cpuGaugeChart, memDonutChart, cpuHistoryChart); 
+        allCharts.forEach(chart => chart.render());
+        applyTheme(localStorage.getItem('dashboard_theme') || 'light');
+
+        function formatKiB(kib) { if (!kib || isNaN(kib)) return "-"; if (kib >= 1048576) return (kib / 1048576).toFixed(1) + "G"; if (kib >= 1024) return (kib / 1024).toFixed(1) + "M"; return Math.round(kib) + "K"; }
+        function colorState(stateStr) { let badgeClass = 'bg-light text-dark'; if(stateStr === "Running" || stateStr === "Active") badgeClass = 'bg-success'; else if (stateStr === "Sleeping") badgeClass = 'bg-secondary'; else if (stateStr === "Zombie") badgeClass = 'bg-danger'; else if (stateStr === "Terminated") badgeClass = 'bg-dark text-white-50'; return `<span class="badge ${badgeClass}">${stateStr}</span>`; }
+        
+        function buildProcessTree(processes) {
+            const processMap = new Map();
+            processes.forEach(p => { p.children = []; processMap.set(p.pid, p); });
+            const tree = [];
+            processes.forEach(p => {
+                if (p.ppid && processMap.has(p.ppid)) {
+                    processMap.get(p.ppid).children.push(p);
+                } else { tree.push(p); }
+            });
+            return tree;
+        }
+        function flattenTree(nodes, flatList = [], prefix = '') {
+            nodes.sort((a, b) => a.pid - b.pid);
+            nodes.forEach((node, index) => {
+                const isLast = index === nodes.length - 1;
+                const newPrefix = prefix + (isLast ? '└─ ' : '├─ ');
+                node.displayCommand = (prefix ? newPrefix : '') + node.command;
+                flatList.push(node);
+                if (node.children && node.children.length > 0) {
+                    const childPrefix = prefix + (isLast ? '   ' : '│  ');
+                    flattenTree(node.children, flatList, childPrefix);
+                }
+            });
+            return flatList;
+        }
+
+        async function refreshAllData() {
+            if (isUpdating) return;
+            isUpdating = true;
+            try {
+                await Promise.all([
+                    loadSystemStats(),
+                    loadProcessData(),
+                    // ✅ MODIFIED: We now fetch alerts from the server in the main loop
+                    loadAlertsData()
+                ]);
+            } catch (error) { 
+                console.error("Error during refresh cycle:", error);
+            } finally {
+                isUpdating = false;
+            }
+        }
+        
+        // --- SYSTEM STATS & GRAPHS ---
+        async function loadSystemStats() { 
+            try { 
+                const response = await fetch('/api/v1/dashboard/system_stats');
+                if (response.ok) {
+                    const stats = await response.json();
+                    const totalCpu = parseFloat(stats.cpu_user) + parseFloat(stats.cpu_system);
+                    $('#cpuSummary').text(`${totalCpu.toFixed(1)}%`);
+                    $('#cpuBreakdown').text(`${stats.cpu_user}% us, ${stats.cpu_system}% sy`);
+                    $('#memSummary').text(`${(stats.mem_used / 1024).toFixed(1)}GB`);
+                    $('#memBreakdown').text(`${(stats.mem_total / 1024).toFixed(1)}GB Total`);
+                    $('#loadSummary').text(stats.load1);
+                    $('#loadSummary + small').text(`1m: ${stats.load1}, 5m: ${stats.load5}, 15m: ${stats.load15}`);
+                    cpuGaugeChart.updateSeries([totalCpu]);
+                    memDonutChart.updateSeries([stats.mem_used, stats.mem_buff_cache, stats.mem_free]);
+                    let history = cpuHistoryChart.w.config.series[0].data;
+                    history.push([Date.now(), totalCpu]);
+                    if(history.length > 60) history.shift();
+                    cpuHistoryChart.updateSeries([{ data: history }]);
+                }
+            } catch (error) { console.error("Sys Stats Network Error:", error); }
+        }
+        
+        // --- PROCESSES TABLE ---
+        async function loadProcessData() {
+            try {
+                const response = await fetch('/api/v1/dashboard/cpu');
+                if (!response.ok) throw new Error(`API Error: ${response.status}`);
+                const processData = (await response.json()).data;
+                
+                if (isCpuTableInitialized) {
+                    let displayData = isTreeView ? flattenTree(buildProcessTree(processData)) : processData;
+                    cpuTable.clear().rows.add(displayData).draw(false);
+                }
+            } catch (error) { console.error("Error fetching process data:", error); }
+        }
+
+        // ✅ --- ALERTS TABLE (REWRITTEN) --- ✅
+        async function loadAlertsData() {
+            try {
+                // Fetch persistent alerts from the server's database
+                const response = await fetch('/api/v1/dashboard/alerts');
+                if (!response.ok) throw new Error(`API Error: ${response.status}`);
+                const alertsData = (await response.json()).data;
+                
+                // Update the table if it's initialized
+                if (isAlertsTableInitialized) {
+                    alertsTable.clear().rows.add(alertsData).draw(false);
+                }
+                
+                // Update the red badge count
+                const activeAlerts = alertsData.filter(a => a.status === 'Active').length;
+                updateAlertCount(activeAlerts);
+
+            } catch (error) { console.error("Error fetching alert data:", error); }
+        }
+        
+        function initCpuTable() {
+            if (isCpuTableInitialized) return;
+            $('#process-table-container').html('<table id="cpuTable" class="table table-sm table-striped nowrap w-100"><thead><tr><th>PID</th><th>User</th><th>PR</th><th>NI</th><th>VIRT</th><th>RES</th><th>SHR</th><th>State</th><th>CPU%</th><th>MEM%</th><th>TIME+</th><th>COMMAND</th></tr></thead></table>');
+            cpuTable = $('#cpuTable').DataTable({
+                data: [], rowId: 'pid',
+                paging: !isTreeView, pageLength: 15, info: true, searching: true,
+                order: isTreeView ? [] : [[8, 'desc']],
+                scrollX: true, autoWidth: false,
+                columns: [ 
+                    { data: 'pid' }, { data: 'username' }, { data: 'priority' }, { data: 'nice' }, 
+                    { data: 'virt', render: formatKiB }, { data: 'res', render: formatKiB }, { data: 'shr', render: formatKiB }, 
+                    { data: 'state', render: colorState }, { data: 'cpu_percent' }, { data: 'mem_percent' }, 
+                    { data: 'time_used' }, 
+                    { 
+                        data: 'command', className: 'command-cell',
+                        render: (data, type, row) => isTreeView && row.displayCommand ? row.displayCommand : data
+                    } 
+                ],
+                language: { emptyTable: "No active processes found." }
+            });
+            isCpuTableInitialized = true;
+        }
+
+        function initAlertsTable() {
+            if (isAlertsTableInitialized) return;
+            $('#alert-table-container').html('<table id="alertsTable" class="table table-striped nowrap w-100"><thead><tr><th>Status</th><th>Agent</th><th>Type</th><th>Value</th><th>Source</th><th>Timestamp</th></tr></thead></table>');
+            alertsTable = $('#alertsTable').DataTable({
+                data: [], rowId: 'id',
+                order: [[5, 'desc']], scrollX: true, autoWidth: false, pageLength: 10,
+                // Columns now match the data from the server API
+                columns: [
+                    { data: 'status', render: colorState }, 
+                    { data: 'hostname' },
+                    { data: 'alert_type' }, 
+                    { data: 'value' }, 
+                    { data: 'source' }, 
+                    { data: 'timestamp', render: (data) => new Date(data).toLocaleString() }
+                ],
+                language: { emptyTable: "No alerts triggered." }
+            });
+            isAlertsTableInitialized = true;
+        }
+
+        function updateAlertCount(count) { const badge = $('#alert-count-badge'); if (count > 0) { badge.text(count).removeClass('d-none'); } else { badge.addClass('d-none'); } }
+        
+        $('#toggle-tree-view').on('change', function() {
+            isTreeView = $(this).is(':checked');
+            if (isCpuTableInitialized) {
+                loadProcessData(); // Reload and re-render process data
+                cpuTable.paging(!isTreeView);
+                cpuTable.order(isTreeView ? [] : [[8, 'desc']]).draw(false);
+            }
+        });
+
+        $('button[data-bs-toggle="tab"]').on('shown.bs.tab', function(e) {
+            const target = $(e.target).data("bs-target");
+            if (target === '#tabProcesses') {
+                $('#tree-view-controls').removeClass('d-none');
+                if (!isCpuTableInitialized) {
+                    initCpuTable();
+                    loadProcessData();
+                }
+            } else {
+                $('#tree-view-controls').addClass('d-none');
+            }
+            if (target === '#tabAlerts') {
+                if (!isAlertsTableInitialized) {
+                    initAlertsTable();
+                    loadAlertsData();
+                }
+            }
+            // Adjust column widths after tab is shown
+            setTimeout(() => { 
+                $($.fn.dataTable.tables(true)).DataTable().columns.adjust();
+            }, 50);
+        });
+        
+        $('#refreshInterval').on('change', function() {
+            clearInterval(interval);
+            const val = parseInt(this.value);
+            if (val > 0) {
+                refreshAllData(); 
+                interval = setInterval(refreshAllData, val);
+            }
+        }).trigger('change');
+
+        // --- INITIAL LOAD ---
+        refreshAllData();
+    });
+    </script>
+</body>
+</html>

@@ -1,0 +1,163 @@
+{% extends "base.html" %}
+{% block title %}📊 Charts Dashboard{% endblock %}
+{% block heading %}📊 Charts Overview{% endblock %}
+
+{% block content %}
+<div class="row">
+  <div class="col-md-6 mb-4">
+    <div class="card p-3 shadow-sm">
+      <canvas id="fimChart"></canvas>
+    </div>
+  </div>
+  <div class="col-md-6 mb-4">
+    <div class="card p-3 shadow-sm">
+      <canvas id="usersChart"></canvas>
+    </div>
+  </div>
+  <div class="col-md-6 mb-4">
+    <div class="card p-3 shadow-sm">
+      <canvas id="trendChart"></canvas>
+    </div>
+  </div>
+  <div class="col-md-6 mb-4">
+    <div class="card p-3 shadow-sm">
+      <canvas id="cmdChart"></canvas>
+    </div>
+  </div>
+  <div class="col-md-6 mb-4">
+    <div class="card p-3 shadow-sm">
+      <canvas id="ipChart"></canvas>
+    </div>
+  </div>
+</div>
+
+<div class="text-end">
+  <a href="/" class="btn btn-secondary mt-3">⬅ Back to Dashboard</a>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+function handleAuthError(response) {
+  if (response.status === 401) {
+    console.warn("⚠️ JWT expired or unauthorized. Redirecting...");
+    window.location.href = "/login?next=" + encodeURIComponent(window.location.pathname);
+    return true;
+  }
+  return false;
+}
+
+async function fetchData(url) {
+  try {
+    const response = await fetch(url);
+    if (!response.ok) {
+      if (handleAuthError(response)) return [];
+      throw new Error(`HTTP ${response.status}`);
+    }
+    return await response.json();
+  } catch (err) {
+    console.error("Fetch error:", url, err);
+    return [];
+  }
+}
+
+function drawPie(id, title, labels, data) {
+  const ctx = document.getElementById(id).getContext('2d');
+  new Chart(ctx, {
+    type: 'pie',
+    data: {
+      labels,
+      datasets: [{
+        data,
+        backgroundColor: [
+          '#0d6efd', '#198754', '#dc3545', '#ffc107', '#6f42c1', '#fd7e14'
+        ],
+        borderWidth: 1
+      }]
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        title: {
+          display: true,
+          text: title,
+          color: getComputedStyle(document.body).color
+        },
+        legend: {
+          labels: {
+            color: getComputedStyle(document.body).color
+          }
+        }
+      }
+    }
+  });
+}
+
+function drawLineChart(id, title, labels, datasets) {
+  const ctx = document.getElementById(id).getContext('2d');
+  new Chart(ctx, {
+    type: 'line',
+    data: { labels, datasets },
+    options: {
+      responsive: true,
+      plugins: {
+        title: {
+          display: true,
+          text: title,
+          color: getComputedStyle(document.body).color
+        },
+        legend: {
+          labels: {
+            color: getComputedStyle(document.body).color
+          }
+        }
+      },
+      scales: {
+        x: { ticks: { color: getComputedStyle(document.body).color } },
+        y: { ticks: { color: getComputedStyle(document.body).color } }
+      }
+    }
+  });
+}
+
+async function initCharts() {
+  const files = await fetchData('/api/v1/charts/top-files');
+  drawPie('fimChart', '📁 Top 5 Modified Files', files.map(f => f.file), files.map(f => f.count));
+
+  const users = await fetchData('/api/v1/charts/active-users');
+  drawPie('usersChart', '👤 Most Active Users (Logins)', users.map(u => u.user), users.map(u => u.count));
+
+  const trends = await fetchData('/api/v1/charts/login-trends');
+  const dates = [...new Set(trends.map(e => e.date))];
+  const logins = dates.map(d => trends.find(e => e.date === d && e.event === 'LOGIN')?.count || 0);
+  const logouts = dates.map(d => trends.find(e => e.date === d && e.event === 'LOGOUT')?.count || 0);
+  drawLineChart('trendChart', '📈 Login vs Logout Over Time', dates, [
+    {
+      label: 'Logins',
+      data: logins,
+      borderColor: 'green',
+      backgroundColor: 'rgba(0,128,0,0.2)',
+      tension: 0.3,
+      fill: true
+    },
+    {
+      label: 'Logouts',
+      data: logouts,
+      borderColor: 'red',
+      backgroundColor: 'rgba(255,0,0,0.2)',
+      tension: 0.3,
+      fill: true
+    }
+  ]);
+
+  const cmds = await fetchData('/api/v1/charts/top-commands');
+  drawPie('cmdChart', '💻 Top 5 Commands Used', cmds.map(c => c.command), cmds.map(c => c.count));
+
+  const ips = await fetchData('/api/v1/charts/top-ips');
+  drawPie('ipChart', '🌐 Top Login Source IPs', ips.map(i => i.from_ip), ips.map(i => i.count));
+}
+
+document.addEventListener('DOMContentLoaded', initCharts);
+</script>
+{% endblock %}

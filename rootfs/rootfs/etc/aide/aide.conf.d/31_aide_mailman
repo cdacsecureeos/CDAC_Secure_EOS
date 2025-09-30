@@ -1,0 +1,29 @@
+# set this variable to enable the rules
+#@@define MAILMAN_LISTS (list1|list2)
+@@define VL_MAILMAN var/lib/mailman
+@@define VL_MAILMAN_ARCHIVES @@{VL_MAILMAN}/archives/private
+@@define MAILMAN_MONTH (January|February|March|April|May|June|July|August|September|October|November|December)
+
+@@if defined MAILMAN_LISTS
+/@@{VL_MAILMAN}/data$ d VarDir
+!/@@{VL_MAILMAN}/data/heldmsg-@@{MAILMAN_LISTS}-[[:digit:]]+\\.pck$ f
+/@@{VL_MAILMAN}/lists/@@{MAILMAN_LISTS}$ d VarDir
+/@@{VL_MAILMAN}/lists/@@{MAILMAN_LISTS}/(pending|request)\\.pck$ f VarFile-u
+/@@{VL_MAILMAN}/lists/@@{MAILMAN_LISTS}/config\\.pck(\\.last)?$ f VarFile-u
+/@@{VL_MAILMAN}/qfiles/(in|out|virgin)$ d VarDir
+/@@{VL_MAILMAN_ARCHIVES}/@@{MAILMAN_LISTS}(\\.mbox)?$ d VarDir
+/@@{VL_MAILMAN_ARCHIVES}/@@{MAILMAN_LISTS}\\.mbox/@@{MAILMAN_LISTS}\\.mbox$ f VarFile
+/@@{VL_MAILMAN_ARCHIVES}/@@{MAILMAN_LISTS}/@@{YEAR4D}-@@{MAILMAN_MONTH}$ d VarDir+ANF
+/@@{VL_MAILMAN_ARCHIVES}/@@{MAILMAN_LISTS}/(database|digest\\.mbox|index\\.html|(pending|pipermail)\\.pck)$ f VarFile
+/@@{VL_MAILMAN_ARCHIVES}/@@{MAILMAN_LISTS}/@@{YEAR4D}-@@{MAILMAN_MONTH}\\.txt(\\.gz)?$ f VarFile+ANF
+/@@{VL_MAILMAN_ARCHIVES}/@@{MAILMAN_LISTS}/(attachments|database)$ d VarDir-n
+/@@{VL_MAILMAN_ARCHIVES}/@@{MAILMAN_LISTS}/attachments/@@{YEAR4D}[[:digit:]]{4}/[[:xdigit:]]{8}$ d VarDir-n
+!/@@{VL_MAILMAN_ARCHIVES}/@@{MAILMAN_LISTS}/attachments/@@{YEAR4D}[[:digit:]]{4}(/[[:xdigit:]]{8})?$ d
+!/@@{VL_MAILMAN_ARCHIVES}/@@{MAILMAN_LISTS}/attachments/@@{YEAR4D}[[:digit:]]{4}/[[:xdigit:]]{8}/attachment\\.htm$ f
+@@endif
+!/@@{RUNLOCK}/mailman/master-qrunner\\.@@{HOSTNAME}}\\.[[:digit:]]+$ f
+/@@{RUN}/mailman$ d VarDirInode
+/@@{RUN}/mailman/mailman\\.pid$ f VarFile
+/@@{RUNLOCK}/mailman$ d VarDirInode
+@@define MAILMAN_LOGS (bounce|error|mischief|post|qrunner|security|smtp(-failure)?|subscribe|vette)
+/var/log/mailman/@@{MAILMAN_LOGS}$ f Log

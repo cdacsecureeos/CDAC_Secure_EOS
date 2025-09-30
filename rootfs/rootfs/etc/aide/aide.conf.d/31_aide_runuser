@@ -1,0 +1,17 @@
+@@define SYSTEMD_UNIT_NAME [-a-z\\\\]+
+
+/@@{RUN}/user$ d RecreatedDir-n
+!/@@{RUN}/user/[0-9]+(/systemd)?$ d
+!/@@{RUN}/user/[0-9]+/systemd/(notify|private)$ s
+!/@@{RUN}/user/[0-9]+/systemd/(transient|units)$ d
+!/@@{RUN}/user/[0-9]+/systemd/inaccessible$ d
+!/@@{RUN}/user/[0-9]+/systemd/inaccessible/blk$ b
+!/@@{RUN}/user/[0-9]+/systemd/inaccessible/chr$ c
+!/@@{RUN}/user/[0-9]+/systemd/inaccessible/dir$ d
+!/@@{RUN}/user/[0-9]+/systemd/inaccessible/fifo$ p
+!/@@{RUN}/user/[0-9]+/systemd/inaccessible/reg$ f
+!/@@{RUN}/user/[0-9]+/systemd/inaccessible/sock$ s
+/@@{RUN}/user/[0-9]+/systemd/generator\\.late(/@@{SYSTEMD_UNIT_NAME}\\.wants)?$ d VarDir
+/@@{RUN}/user/[0-9]+/systemd/generator\\.late/@@{SYSTEMD_UNIT_NAME}\\.service$ f VarFile
+/@@{RUN}/user/[0-9]+/systemd/generator\\.late/@@{SYSTEMD_UNIT_NAME}\\.wants/@@{SYSTEMD_UNIT_NAME}\\.service$ l VarFile
+@@undef SYSTEMD_UNIT_NAME

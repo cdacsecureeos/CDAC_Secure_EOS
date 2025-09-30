@@ -1,0 +1,69 @@
+# all four variables need to be defined to active this rule
+#@@define MUNIN_DOMAINS undefined
+#@@define MUNIN_HOSTS undefined
+#@@define MUNIN_DISKDEVS undefined
+#@@define MUNIN_DISKS undefined
+
+@@if defined MUNIN_DOMAINS
+@@if defined MUNIN_HOSTS
+@@if defined MUNIN_DISKDEVS
+@@if defined MUNIN_DISKS
+/@@{RUN}/munin$ d VarDirInode
+!/@@{RUN}/munin/munin-master-processmanager-[[:digit:]]+\\.sock$ s
+!/@@{RUN}/munin/munin-(update|@@{MUNIN_DOMAINS}-@@{MUNIN_HOSTS})\\.lock$ f
+/var/cache/munin/www/static$ d VarDir
+/var/cache/munin/www/static/((definitions|dynazoom)\\.html|favicon\\.ico|(formatdate|querystring|zoom)\\.js|logo(-h)?\\.png|style(-1\\.2|-new)?\\.css)$ f VarFile
+/var/cache/munin/www/@@{MUNIN_DOMAINS}/@@{MUNIN_HOSTS}$ d VarDir
+/var/cache/munin/www/(disk|exim|munin|network|processes|sensors|system|time)-(day|month|week|year)\\.html$ f VarFile
+@@define MUNIN_LOCAL (cpu|df|df_inode|entropy|exim_mail(queue|stats)|forks|fw_packets|http_loadtime|if(_err)?_eth0|interrupts|iostat(_ios)?|irqstats|load|memory|munin_stats|ntp_kernel_(err|pll_freq|pll_off)|ntp_offset|open_(files|inodes)|proc_pri|processes|swap|threads|uptime|users|vmstat)
+/var/cache/munin/www/@@{MUNIN_DOMAINS}/@@{MUNIN_HOSTS}/diskstats_(iops|latency|throughput|utilization)$ d VarDir
+/var/cache/munin/www/@@{MUNIN_DOMAINS}/@@{MUNIN_HOSTS}/diskstats_(iops|latency|throughput|utilization)/@@{MUNIN_DISKDEVS}(\\.html|-(day|week|month|year)\\.png)$ f VarFile
+/var/cache/munin/www/@@{MUNIN_DOMAINS}/@@{MUNIN_HOSTS}/diskstats_(iops|latency|throughput|utilization)(\\.html|-(day|week|month|year)\\.png)$ f VarFile
+/var/cache/munin/www/@@{MUNIN_DOMAINS}/@@{MUNIN_HOSTS}/mysql_(bytes|(slow)?queries|threads)(\\.html|-(day|week|month|year)\\.png)$ f VarFile
+/var/cache/munin/www/@@{MUNIN_DOMAINS}/@@{MUNIN_HOSTS}/(acpi|netstat)(\\.html|-(day|week|month|year)\\.png)$ f VarFile
+/var/cache/munin/www/@@{MUNIN_DOMAINS}(/@@{MUNIN_HOSTS}/diskstats_(iops|latency|throughput|utilization))?/index\\.html$ f VarFile
+/var/cache/munin/www/@@{MUNIN_DOMAINS}/@@{MUNIN_HOSTS}/@@{MUNIN_LOCAL}(\\.html|-(day|month|week|year)\\.png)$ f VarFile
+/var/cache/munin/www/(@@{MUNIN_DOMAINS}/@@{MUNIN_HOSTS}/)?(index|problems)\\.html$ f VarFile
+/var/lib/munin$ d VarDir
+/var/lib/munin/graphs$ f VarFile
+/var/lib/munin/(state-@@{MUNIN_DOMAINS}-@@{MUNIN_HOSTS}|datafile|limits|htmlconf)(\\.storable)?$ f VarFile
+/var/lib/munin/munin-(graph|update)\\.stats$ f VarFile
+/var/lib/munin-node/plugin-state/(munin|nobody)$ d VarDir
+/var/lib/munin/@@{MUNIN_DOMAINS}/@@{MUNIN_HOSTS}-(forks-forks|swap-swap_(in|out))-d\\.rrd$ f VarFile
+/var/lib/munin/@@{MUNIN_DOMAINS}/@@{MUNIN_HOSTS}-entropy-entropy-g\\.rrd$ f VarFile
+/var/lib/munin/@@{MUNIN_DOMAINS}/@@{MUNIN_HOSTS}-cpu-(guest|idle|iowait|irq|nice|softirq|steal|system|user)-d\\.rrd$ f VarFile
+/var/lib/munin/@@{MUNIN_DOMAINS}/@@{MUNIN_HOSTS}-(load-load|threads-threads|uptime-uptime)-g\\.rrd$ f VarFile
+/var/lib/munin/@@{MUNIN_DOMAINS}/@@{MUNIN_HOSTS}-df(_inode)?-(_dev|@@{MUNIN_DISKS})-g\\.rrd$ f VarFile
+/var/lib/munin/@@{MUNIN_DOMAINS}/@@{MUNIN_HOSTS}-diskstats_iops-@@{MUNIN_DISKDEVS}[_-](avg(rd|wr)rqsz|(rd|wr)io)-g\\.rrd$ f VarFile
+/var/lib/munin/@@{MUNIN_DOMAINS}/@@{MUNIN_HOSTS}-diskstats_(latency)-@@{MUNIN_DISKDEVS}[-_](avg(rd|wr)?wait|svctm)-g\\.rrd$ f VarFile
+/var/lib/munin/@@{MUNIN_DOMAINS}/@@{MUNIN_HOSTS}-diskstats_(throughput)-@@{MUNIN_DISKDEVS}[-_]((rd|wr)bytes)-g\\.rrd$ f VarFile
+/var/lib/munin/@@{MUNIN_DOMAINS}/@@{MUNIN_HOSTS}-diskstats_(utilization)-@@{MUNIN_DISKDEVS}[-_](util)-g\\.rrd$ f VarFile
+/var/lib/munin/@@{MUNIN_DOMAINS}/@@{MUNIN_HOSTS}-exim_mail(queue-(frozen|mails)-g|stats-(completed|received|rejected)-d)\\.rrd$ f VarFile
+/var/lib/munin/@@{MUNIN_DOMAINS}/@@{MUNIN_HOSTS}-fw_packets-(forwarded|received)-d\\.rrd$ f VarFile
+/var/lib/munin/@@{MUNIN_DOMAINS}/@@{MUNIN_HOSTS}-if_err_eth0-(collisions|rcvd|rxdrop|trans|txdrop)-c\\.rrd$ f VarFile
+/var/lib/munin/@@{MUNIN_DOMAINS}/@@{MUNIN_HOSTS}-if_eth0-(down|up)-d\\.rrd$ f VarFile
+/var/lib/munin/@@{MUNIN_DOMAINS}/@@{MUNIN_HOSTS}-interrupts-(ctx|intr)-d\\.rrd$ f VarFile
+/var/lib/munin/@@{MUNIN_DOMAINS}/@@{MUNIN_HOSTS}-iostat-dev[[:digit:]]+_[[:digit:]]{1,2}_(read|write)-d\\.rrd$ f VarFile
+/var/lib/munin/@@{MUNIN_DOMAINS}/@@{MUNIN_HOSTS}-iostat_ios-dev[[:digit:]]+_[[:digit:]]{1,2}_[rw]time-g\\.rrd$ f VarFile
+/var/lib/munin/@@{MUNIN_DOMAINS}/@@{MUNIN_HOSTS}-irqstats-i([[:digit:]]+|CAL|DFR|ERR|HYP|IWI|LOC|MCE|MCP|MIS|NMI|NPI|PIN|PIW|PMI|RES|RTR|SPU|THR|TLB|TRM)-d\\.rrd$ f VarFile
+/var/lib/munin/@@{MUNIN_DOMAINS}/@@{MUNIN_HOSTS}-memory-(active|apps|buffers|cached|committed|free|inactive|mapped|page_tables|shmem|slab|swap|swap_cache|vmalloc_used)-g\\.rrd$ f VarFile
+/var/lib/munin/@@{MUNIN_DOMAINS}/@@{MUNIN_HOSTS}-munin_stats-(graph|html|limits|update)-g\\.rrd$ f VarFile
+/var/lib/munin/@@{MUNIN_DOMAINS}/@@{MUNIN_HOSTS}-ntp_(kernel_(err-ntp_err|pll_(freq|off)-ntp_pll_(freq|off)))-g\\.rrd$ f VarFile
+/var/lib/munin/@@{MUNIN_DOMAINS}/@@{MUNIN_HOSTS}-ntp_offset-(delay|jitter|offset)-g\\.rrd$ f VarFile
+/var/lib/munin/@@{MUNIN_DOMAINS}/@@{MUNIN_HOSTS}-open_(files-used|inodes-(max|used))-g\\.rrd$ f VarFile
+/var/lib/munin/@@{MUNIN_DOMAINS}/@@{MUNIN_HOSTS}-proc_pri-(high|locked|low)-g\\.rrd$ f VarFile
+/var/lib/munin/@@{MUNIN_DOMAINS}/@@{MUNIN_HOSTS}-processes-(dead|idle|paging|processes|runnable|sleeping|stopped|uninterruptible|zombie)-g\\.rrd$ f VarFile
+/var/lib/munin/@@{MUNIN_DOMAINS}/@@{MUNIN_HOSTS}-users-(X|other|pts|pty|tty)-g\\.rrd$ f VarFile
+/var/lib/munin/@@{MUNIN_DOMAINS}/@@{MUNIN_HOSTS}-vmstat-(sleep|wait)-g\\.rrd$ f VarFile
+/var/lib/munin/@@{MUNIN_DOMAINS}/@@{MUNIN_HOSTS}-http_loadtime-http___localhost_-g\\.rrd$ f VarFile
+@@endif
+@@endif
+@@endif
+@@endif
+
+/var/lib/munin-node/plugin-state/munin/munin_stats-::ffff:127\\.0\\.0\\.1$ f VarFile
+/var/lib/munin-node/plugin-state/nobody/(disk|exim_mail)stats-::ffff:127\\.0\\.0\\.1$ f VarFile
+/var/lib/munin-node/plugin-state/nobody/iostat-ios\\.state$ f VarFile
+
+/var/log/munin/munin-(html|limits|node|update)\\.log$ f Log
+

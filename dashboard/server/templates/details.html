@@ -1,0 +1,93 @@
+{% extends "base.html" %}
+
+{% block title %}Live System Details{% endblock %}
+
+{% block content %}
+    <div class="container-fluid p-4">
+        <header class="d-flex justify-content-between align-items-center mb-4">
+            <h1 class="h2"><i class="fas fa-server me-2 text-primary"></i>Live System Dashboard</h1>
+            <div class="d-flex align-items-center">
+                <div class="form-check form-switch me-3 d-none" id="tree-view-controls">
+                    <input class="form-check-input" type="checkbox" role="switch" id="toggle-tree-view" checked>
+                    <label class="form-check-label" for="toggle-tree-view">Tree View</label>
+                </div>
+                <label for="refreshInterval" class="me-2 fw-bold small">Refresh:</label>
+                <select id="refreshInterval" class="form-select form-select-sm" style="width: auto;">
+                    <option value="0">Off</option><option value="10000" selected>10s</option><option value="30000">30s</option>
+                </select>
+            </div>
+        </header>
+
+        <ul class="nav nav-tabs" id="dashboardTabs" role="tablist">
+            <li class="nav-item" role="presentation"><button class="nav-link active" id="graphs-tab" data-bs-toggle="tab" data-bs-target="#tabGraphs" type="button"><i class="fas fa-chart-area me-1"></i> Graphs</button></li>
+            <li class="nav-item" role="presentation"><button class="nav-link" id="processes-tab" data-bs-toggle="tab" data-bs-target="#tabProcesses" type="button"><i class="fas fa-sitemap me-1"></i> Processes</button></li>
+            <li class="nav-item" role="presentation"><button class="nav-link position-relative" id="alerts-tab" data-bs-toggle="tab" data-bs-target="#tabAlerts" type="button"><i class="fas fa-bell me-1"></i> Alerts<span id="alert-count-badge" class="badge rounded-pill bg-danger position-absolute top-0 start-100 translate-middle d-none">0</span></button></li>
+        </ul>
+
+        <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade show active" id="tabGraphs" role="tabpanel">...</div>
+            <div class="tab-pane fade" id="tabProcesses" role="tabpanel">...</div>
+            <div class="tab-pane fade" id="tabAlerts" role="tabpanel">...</div>
+        </div>
+    </div>
+    <div class="toast-container position-fixed bottom-0 end-0 p-3"></div>
+{% endblock %}
+
+{% block scripts %}
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css">
+  ...
+
+{% block scripts %}
+    ...
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css">
+    <style>
+        /* ✅ CORRECT: The CSS rules are now filled with style declarations */
+        :root {
+            --bg-color: #f4f7fc; --card-bg-color: #ffffff; --text-color: #2c3e50;
+            --text-muted-color: #6c757d; --border-color: #dee2e6; --primary-color: #0d6efd;
+            --primary-hover-color: #0a58ca; --info-color: #0dcaf0; --warning-color: #ffc107;
+            --danger-color: #dc3545; --success-color: #198754; --card-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            --table-striped-bg: #f8f9fa; --table-hover-bg: #e9ecef;
+        }
+        [data-theme="dark"] {
+            --bg-color: #121212; --card-bg-color: #1e1e1e; --text-color: #e0e0e0;
+            --text-muted-color: #a0a0b0; --border-color: #3a3f4b; --primary-color: #4dabf7;
+            --primary-hover-color: #74c0fc; --info-color: #4de0e0; --warning-color: #ffd43b;
+            --danger-color: #ff6b6b; --success-color: #4ade80; --card-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+            --table-striped-bg: #2a2a2a; --table-hover-bg: #343a40;
+        }
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+        }
+        /* ... and all the other CSS rules ... */
+    </style>
+
+    ...
+{% endblock %}
+
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
+
+    <script>
+        // All the <script> content from your "Live System Dashboard" goes here
+        $(document).ready(function() {
+            // --- This NEW code will automatically open the correct tab ---
+            // It checks the URL for a hash like #tabProcesses
+            const urlHash = window.location.hash;
+            if (urlHash) {
+                const tabToActivate = document.querySelector(`.nav-tabs button[data-bs-target="${urlHash}"]`);
+                if (tabToActivate) {
+                    new bootstrap.Tab(tabToActivate).show();
+                }
+            }
+
+            // --- The rest of your existing script ---
+            let cpuTable, alertsTable, interval;
+            // ... all the way to the end of the script ...
+            refreshAllData();
+        });
+    </script>
+{% endblock %}

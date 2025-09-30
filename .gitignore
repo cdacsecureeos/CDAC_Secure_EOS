@@ -1,0 +1,22 @@
+# Ignore private keys
+*.pem
+*.key
+*.crt
+
+# Ignore build artifacts
+*.o
+*.ko
+*.so
+*.bin
+*.elf
+*.img
+*.iso
+*.uImage
+*.wic
+*.tar.gz
+*.zip
+
+# Ignore rootfs build directories
+rootfs/rootfs/*
+!rootfs/rootfs/etc/
+

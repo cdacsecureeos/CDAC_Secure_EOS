@@ -1,0 +1,22 @@
+# you can override PHPVERSION from an earlier snippet if
+# 7.4 is not current any more
+@@if not defined PHPVERSION
+@@define PHPVERSION 7\\.4
+@@endif
+@@define PHPFPMLOGS var/log/php@@{PHPVERSION}-fpm\\.log
+/@@{PHPFPMLOGS}$ f Log
+/@@{PHPFPMLOGS}\\.1$ f LowLog
+/@@{PHPFPMLOGS}\\.2\\.@@{LOGEXT}$ f LoSerMemberLog
+/@@{PHPFPMLOGS}\\.([3456789]|1[01])\\.@@{LOGEXT}$ f SerMemberLog
+/@@{PHPFPMLOGS}\\.12\\.@@{LOGEXT}$ f HiSerMemberLog
+
+/@@{RUN}/php$ d VarDirInode
+/@@{RUN}/php/php@@{PHPVERSION}-fpm\\.pid$ f VarFile
+!/@@{RUN}/php/php@@{PHPVERSION}-fpm-default\\.sock$ s
+!/@@{RUN}/php/php-fpm\\.sock$ l
+!/@@{RUN}/php/php@@{PHPVERSION}-fpm\\.sock$ s
+!/@@{RUN}/systemd/units/invocation:php@@{PHPVERSION}-fpm\\.service$ l
+/etc/alternatives$ d VarDir
+!/etc/alternatives/php-fpm\\.sock$ l
+/var/lib/dpkg/alternatives$ d VarDir
+/var/lib/dpkg/alternatives/php-fpm\\.sock$ f VarFile

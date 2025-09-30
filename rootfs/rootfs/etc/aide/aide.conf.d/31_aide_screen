@@ -1,0 +1,4 @@
+@@define SCREEN_ALLOWED_USERS ([[:alnum:]]+)
+/@@{RUN}/screen$ d VarDirInode-n
+!/@@{RUN}/screen/S-@@{SCREEN_ALLOWED_USERS}$ d
+!/@@{RUN}/screen/S-@@{SCREEN_ALLOWED_USERS}/[[:digit:]]+.([[:alnum:]]+|pts-[[:digit:]]+\\.@@{HOSTNAME})$ s

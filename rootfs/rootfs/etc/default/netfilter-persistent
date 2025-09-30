@@ -1,0 +1,22 @@
+# Configuration for netfilter-persistent
+# Plugins may extend this file or have their own
+
+FLUSH_ON_STOP=0
+
+# Set to yes to skip saving rules/sets when netfilter-persistent is called with
+# the save parameter
+# IPTABLES_SKIP_SAVE=yes
+# IP6TABLES_SKIP_SAVE=yes
+# IPSET_SKIP_SAVE=yes
+
+
+# Set to yes for not flushing existing ip[6]tables rules when netfilter-persistent
+# is called with the start parameter
+# IPTABLES_RESTORE_NOFLUSH=yes
+# IP6TABLES_RESTORE_NOFLUSH=yes
+
+
+# Set to yes to test load the rules before applying them. This avoids loading failure
+# from causing no rules to be loaded in the kernel
+IPTABLES_TEST_RULESET=yes
+IP6TABLES_TEST_RULESET=yes
